@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASIAN TEA HOUSE — Адаптация на Vue.js</title>
+
+  <!-- Google Fonts: Inter & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 4 CSS (Локальный вендор + CDN резерв) -->
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+
+  <!-- Стили приложения Asian Tea House + Voyager + Vue компоненты -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Vue.js 3 (Локальный вендор + CDN резерв) -->
+  <script src="vendor/vue.global.prod.js"></script>
+  <script>
+    if (typeof Vue === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"><\/script>');
+    }
+  </script>
+
+  <!-- SheetJS для парсинга и экспорта Excel файлов (.xlsx, .xls) -->
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script>
+    if (typeof XLSX === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- Tailwind CSS 3.4+ Play CDN (Локальный вендор + CDN резерв с плагинами) -->
+  <script src="vendor/tailwindcss.js"></script>
+  <script>
+    if (typeof tailwind === 'undefined') {
+      document.write('<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"><\/script>');
+    }
+  </script>
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f4f8f5',
+                100: '#e5f0e7',
+                200: '#cce2d1',
+                300: '#a3ccad',
+                400: '#73b082',
+                500: '#4c935d',
+                600: '#3a7749',
+                700: '#2f5f3b',
+                800: '#284c31',
+                900: '#233f2a',
+              },
+              tea: {
+                leaf: '#4c935d',
+                dark: '#1c2820',
+                clay: '#b45309',
+                gold: '#d97706',
+                cream: '#fdfbf7',
+                stone: '#64748b'
+              }
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <!-- Кастомные @apply стили и компоненты дизайн-системы для Tailwind CDN -->
+  <link rel="stylesheet" href="css/tailwind-custom.css">
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn-tw {
+        @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none;
+      }
+      .btn-tw-sm {
+        @apply btn-tw px-3 py-1.5 text-xs rounded-md gap-1.5;
+      }
+      .btn-tw-md {
+        @apply btn-tw px-4 py-2 text-sm rounded-lg gap-2;
+      }
+      .btn-tw-lg {
+        @apply btn-tw px-6 py-3 text-base rounded-xl gap-2.5 shadow-sm;
+      }
+      .btn-tw-primary {
+        @apply bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 focus-visible:ring-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-600;
+      }
+      .btn-tw-secondary {
+        @apply bg-slate-100 text-slate-800 hover:bg-slate-200 active:bg-slate-300 focus-visible:ring-slate-400 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+      }
+      .btn-tw-outline {
+        @apply border border-slate-300 text-slate-700 hover:bg-slate-50 active:bg-slate-100 focus-visible:ring-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800;
+      }
+      .btn-tw-ghost {
+        @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200 focus-visible:ring-slate-400 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100;
+      }
+      .btn-tw-danger {
+        @apply bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 focus-visible:ring-rose-500 dark:bg-rose-500 dark:hover:bg-rose-600;
+      }
+      .badge-tw {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide;
+      }
+      .badge-tw-success {
+        @apply badge-tw bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800;
+      }
+      .badge-tw-danger {
+        @apply badge-tw bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800;
+      }
+      .badge-tw-warning {
+        @apply badge-tw bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800;
+      }
+      .badge-tw-info {
+        @apply badge-tw bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800;
+      }
+      .badge-tw-neutral {
+        @apply badge-tw bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700;
+      }
+      .alert-tw {
+        @apply flex items-start gap-3 p-4 rounded-xl border text-sm transition-all;
+      }
+      .alert-tw-success {
+        @apply alert-tw bg-emerald-50 border-emerald-200 text-emerald-900 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-200;
+      }
+      .alert-tw-danger {
+        @apply alert-tw bg-rose-50 border-rose-200 text-rose-900 dark:bg-rose-950/40 dark:border-rose-800 dark:text-rose-200;
+      }
+      .alert-tw-warning {
+        @apply alert-tw bg-amber-50 border-amber-200 text-amber-900 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-200;
+      }
+      .alert-tw-info {
+        @apply alert-tw bg-indigo-50 border-indigo-200 text-indigo-900 dark:bg-indigo-950/40 dark:border-indigo-800 dark:text-indigo-200;
+      }
+      .input-tw {
+        @apply w-full px-3.5 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 text-sm transition-all focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-emerald-400 dark:focus:ring-emerald-400/20;
+      }
+      .card-tw {
+        @apply bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl shadow-sm transition-all;
+      }
+      .card-tw-hover {
+        @apply card-tw hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600;
+      }
+      .heading-1 {
+        @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight;
+      }
+      .heading-2 {
+        @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100;
+      }
+      .heading-3 {
+        @apply text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100;
+      }
+      .body-text {
+        @apply text-base text-slate-600 dark:text-slate-300 leading-relaxed;
+      }
+      .caption-text {
+        @apply text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Точка монтирования Vue 3 приложения -->
+  <div id="app">
+    <!-- Всплывающие асинхронные уведомления -->
+    <toast-notification :toasts="toasts" @dismiss="dismissToast"></toast-notification>
+
+    <!-- Шапка сайта с навигацией и учетной записью -->
+    <app-header 
+      :current-view="currentView" 
+      :current-user="currentUser" 
+      @navigate="navigate" 
+      @logout="handleLogout"
+    ></app-header>
+
+    <!-- ОСНОВНЫЕ СТРАНИЦЫ ПРИЛОЖЕНИЯ -->
+    <main>
+      <!-- 1. Главная страница (витрина и переход к модулю Excel) -->
+      <home-view 
+        v-if="currentView === 'home'" 
+        :teas="teas" 
+        @navigate="navigate"
+        @toast="addToast"
+      ></home-view>
+
+      <!-- 2. Страница отображения данных в виде таблицы (Bootstrap 4 CRUD + пагинация + lazy loading) -->
+      <table-view 
+        v-else-if="currentView === 'table'" 
+        :current-user="currentUser"
+        @navigate="navigate"
+        @toast="addToast"
+        @teas-updated="refreshTeas"
+      ></table-view>
+
+      <!-- 2.1. Отдельная страница модуля Excel (Загрузчик и отдельная таблица данных) -->
+      <excel-table-view 
+        v-else-if="currentView === 'excel-table'"
+        @navigate="navigate"
+        @toast="addToast"
+        @file-error="handleFileError"
+        @import-success="handleImportSuccess"
+        @teas-updated="refreshTeas"
+      ></excel-table-view>
+
+      <!-- 3. Страница журнала действий и сравнения состояний (Задание 2: Log + vue-json-compare) -->
+      <logs-view 
+        v-else-if="currentView === 'logs'"
+        @toast="addToast"
+      ></logs-view>
+
+      <!-- 4. Модуль просмотра списка загруженных файлов в локальном хранилище -->
+      <files-view 
+        v-else-if="currentView === 'files'"
+        @toast="addToast"
+        @navigate="navigate"
+      ></files-view>
+
+      <!-- 5. Страница администратора (Компонент Voyager) -->
+      <admin-view 
+        v-else-if="currentView === 'admin'" 
+        :current-user="currentUser" 
+        :teas="teas"
+        @toast="addToast"
+        @navigate="navigate"
+      ></admin-view>
+
+      <!-- 6. Страницы авторизации / регистрации / восстановления пароля («из коробки») -->
+      <auth-view 
+        v-else-if="currentView === 'auth'"
+        @auth-success="handleAuthSuccess"
+        @navigate="navigate"
+        @toast="addToast"
+      ></auth-view>
+
+      <!-- 7. Лаборатория вёрстки Tailwind CSS (Все 4 уровня: Начальный, Средний, Продвинутый, Экспертный) -->
+      <tailwind-lab-view
+        v-else-if="currentView === 'tailwind'"
+        :current-user="currentUser"
+        @navigate="navigate"
+        @toast="addToast"
+      ></tailwind-lab-view>
+
+      <!-- 8. Личный кабинет и профиль пользователя (Требование 4) -->
+      <profile-view
+        v-else-if="currentView === 'profile'"
+        :current-user="currentUser"
+        @user-updated="handleUserUpdated"
+        @navigate="navigate"
+        @toast="addToast"
+        @logout="handleLogout"
+      ></profile-view>
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО ОШИБКИ НЕПОДХОДЯЩЕГО ФОРМАТА ФАЙЛА (Требование 1) -->
+    <error-modal 
+      :show="showErrorModal" 
+      :error-info="errorModalInfo" 
+      @close="showErrorModal = false"
+    ></error-modal>
+  </div>
+
+  <!-- Сервисы хранилища данных, асинхронного API, журнала и пользователей -->
+  <script src="js/storage.js"></script>
+
+  <!-- Vue Компоненты Базового Проекта -->
+  <script src="js/components/AdSlot.js"></script>
+  <script src="js/components/ToastNotification.js"></script>
+  <script src="js/components/ErrorModal.js"></script>
+  <script src="js/components/TeaModal.js"></script>
+  <script src="js/components/CompareModal.js"></script>
+  <script src="js/components/ExcelUploader.js"></script>
+  <script src="js/components/ExcelTable.js"></script>
+  <script src="js/components/AppHeader.js"></script>
+  <script src="js/Header.js"></script>
+
+  <!-- Vue Представления (Views) Базового Проекта -->
+  <script src="js/views/HomeView.js"></script>
+  <script src="js/views/AuthView.js"></script>
+  <script src="js/views/TableView.js"></script>
+  <script src="js/views/ExcelTableView.js"></script>
+  <script src="js/views/LogsView.js"></script>
+  <script src="js/views/FilesView.js"></script>
+  <script src="js/views/AdminView.js"></script>
+  <script src="js/views/ProfileView.js"></script>
+
+  <!-- Vue Компоненты Tailwind CSS (Уровни 1, 2, 3, 4 и Дизайн-система) -->
+  <script src="js/components/tailwind/ProfileCard.js"></script>
+  <script src="js/components/tailwind/TailwindNavbar.js"></script>
+  <script src="js/components/tailwind/ProductGrid.js"></script>
+  <script src="js/components/tailwind/GradientHero.js"></script>
+  <script src="js/components/tailwind/PricingTable.js"></script>
+  <script src="js/components/tailwind/SidebarDashboard.js"></script>
+  <script src="js/components/tailwind/RegisterForm.js"></script>
+  <script src="js/components/tailwind/MessengerChat.js"></script>
+  <script src="js/components/tailwind/KanbanBoard.js"></script>
+  <script src="js/components/tailwind/TailwindLanding.js"></script>
+  <script src="js/components/tailwind/DarkModeToggle.js"></script>
+  <script src="js/components/tailwind/AnalyticsDashboard.js"></script>
+  <script src="js/components/tailwind/MultiStepForm.js"></script>
+  <script src="js/components/tailwind/EcommerceCatalog.js"></script>
+  <script src="js/components/tailwind/DesignSystemShowcase.js"></script>
+  <script src="js/views/TailwindLabView.js"></script>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

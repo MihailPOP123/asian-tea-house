@@ -1,0 +1,14 @@
+# Зависимости и пакеты
+node_modules/
+.npm/
+
+# Системные файлы и кэш
+.DS_Store
+Thumbs.db
+*.log
+.gemini/
+
+# Временные файлы редакторов
+.vscode/
+.idea/
+*.swp

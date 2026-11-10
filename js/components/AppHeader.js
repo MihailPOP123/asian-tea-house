@@ -1,0 +1,306 @@
+/**
+ * AppHeader.js — Шапка приложения с адаптивной навигацией,
+ * разграничением прав доступа по ролям (user vs admin)
+ * и быстрым переходом в профиль пользователя
+ */
+
+window.AppHeader = {
+  name: 'AppHeader',
+  props: {
+    currentView: {
+      type: String,
+      default: 'home'
+    },
+    currentUser: {
+      type: Object,
+      default: null
+    }
+  },
+  emits: ['navigate', 'logout'],
+  data() {
+    return {
+      mobileMenuOpen: false,
+      dataDropdownOpen: false
+    };
+  },
+  mounted() {
+    this.handleOutsideClick = (e) => {
+      if (!this.$el) return;
+      const dropdownContainer = this.$el.querySelector('.nav-item.dropdown');
+      if (dropdownContainer && !dropdownContainer.contains(e.target)) {
+        this.dataDropdownOpen = false;
+      }
+    };
+    document.addEventListener('click', this.handleOutsideClick);
+  },
+  beforeUnmount() {
+    if (this.handleOutsideClick) {
+      document.removeEventListener('click', this.handleOutsideClick);
+    }
+  },
+  methods: {
+    setRoute(route) {
+      this.mobileMenuOpen = false;
+      this.dataDropdownOpen = false;
+      this.$emit('navigate', route);
+    },
+    toggleDropdown() {
+      this.dataDropdownOpen = !this.dataDropdownOpen;
+    }
+  },
+  template: `
+    <header class="header bg-white border-bottom shadow-sm sticky-top" style="z-index: 1040;">
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        
+        <!-- 1. Логотип слева -->
+        <a href="#home" class="logo d-flex align-items-center text-decoration-none text-dark" @click.prevent="setRoute('home')">
+          <span class="d-inline-flex align-items-center justify-content-center text-white font-weight-bold rounded mr-2" style="width: 32px; height: 32px; background-color: var(--accent-brown); font-family: var(--font-serif);">
+            T
+          </span>
+          <span class="font-weight-bold" style="letter-spacing: 0.1em; font-family: var(--font-serif); font-size: 1.1rem;">
+            ASIAN TEA HOUSE
+          </span>
+        </a>
+
+        <!-- Бургер кнопка для мобильных экранов -->
+        <button 
+          class="burger-btn d-lg-none btn btn-outline-dark btn-sm px-3" 
+          @click="mobileMenuOpen = !mobileMenuOpen" 
+          aria-label="Открыть мобильное меню"
+        >
+          <span>Меню</span>
+        </button>
+
+        <!-- 2. Адаптированная навигация по центру для десктопа (сгруппированные разделы) -->
+        <nav class="nav-links d-none d-lg-flex align-items-center">
+          <ul class="nav align-items-center mb-0">
+            
+            <!-- Главная -->
+            <li class="nav-item">
+              <a 
+                href="#home" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'home', 'text-dark': currentView !== 'home' }"
+                @click.prevent="setRoute('home')"
+              >
+                Главная
+              </a>
+            </li>
+
+            <!-- Каталог сортов чая -->
+            <li class="nav-item">
+              <a 
+                href="#table" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'table', 'text-dark': currentView !== 'table' }"
+                @click.prevent="setRoute('table')"
+              >
+                Каталог
+              </a>
+            </li>
+
+            <!-- Сгруппированное выпадающее меню «Модули данных и Excel» для компактности -->
+            <li class="nav-item dropdown position-relative">
+              <a 
+                href="#" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase d-flex align-items-center"
+                :class="{ 'text-success active': ['excel-table', 'files', 'logs'].includes(currentView), 'text-dark': !['excel-table', 'files', 'logs'].includes(currentView) }"
+                @click.prevent="toggleDropdown"
+              >
+                <span>Данные и Excel</span>
+                <svg class="ml-1" style="width: 10px; height: 10px; fill: currentColor;" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </a>
+
+              <!-- Выпадающий список -->
+              <div 
+                v-if="dataDropdownOpen" 
+                class="dropdown-menu show shadow-lg border-0 py-2 mt-1 position-absolute"
+                style="top: 100%; left: 0; min-width: 220px; border-radius: 8px; z-index: 1050;"
+              >
+                <a 
+                  href="#excel-table" 
+                  class="dropdown-item py-2 small font-weight-medium"
+                  :class="{ 'text-success font-weight-bold bg-light': currentView === 'excel-table' }"
+                  @click.prevent="setRoute('excel-table')"
+                >
+                  Таблица Excel (Загрузка)
+                </a>
+                <a 
+                  href="#files" 
+                  class="dropdown-item py-2 small font-weight-medium"
+                  :class="{ 'text-success font-weight-bold bg-light': currentView === 'files' }"
+                  @click.prevent="setRoute('files')"
+                >
+                  Хранилище файлов Excel
+                </a>
+                <a 
+                  href="#logs" 
+                  class="dropdown-item py-2 small font-weight-medium"
+                  :class="{ 'text-success font-weight-bold bg-light': currentView === 'logs' }"
+                  @click.prevent="setRoute('logs')"
+                >
+                  Журнал действий и Compare
+                </a>
+              </div>
+            </li>
+
+            <!-- Лаборатория Tailwind CSS 3.4+ -->
+            <li class="nav-item">
+              <a 
+                href="#tailwind" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase d-flex align-items-center"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'tailwind', 'text-dark': currentView !== 'tailwind' }"
+                @click.prevent="setRoute('tailwind')"
+              >
+                <span>Лаборатория Tailwind</span>
+                <span class="badge badge-success ml-1.5" style="font-size: 0.65rem;">3.4+</span>
+              </a>
+            </li>
+
+            <!-- Voyager Админ — СТРОГО ТОЛЬКО ДЛЯ РОЛИ 'admin' (Требование 3) -->
+            <!-- Для обычного покупателя (role: 'user') этот пункт скрыт! -->
+            <li class="nav-item" v-if="currentUser && currentUser.role === 'admin'">
+              <a 
+                href="#admin" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase text-danger"
+                :class="{ 'active border-bottom border-danger': currentView === 'admin' }"
+                @click.prevent="setRoute('admin')"
+                title="Панель администратора (доступно только роли admin)"
+              >
+                Voyager Админ
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- 3. Пользовательский блок справа с быстрым переходом в профиль (Требование 4) -->
+        <div class="user-action-block d-flex align-items-center">
+          
+          <!-- Авторизованный пользователь -->
+          <div v-if="currentUser" class="d-flex align-items-center">
+            
+            <!-- Кликабельная карточка профиля в шапке -->
+            <div 
+              class="d-flex align-items-center mr-3 p-1 rounded cursor-pointer profile-nav-badge"
+              @click="setRoute('profile')"
+              title="Открыть мой профиль"
+              style="cursor: pointer;"
+            >
+              <!-- Круглый мини-аватар -->
+              <div 
+                class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center font-weight-bold mr-2 shadow-sm"
+                style="width: 32px; height: 32px; font-size: 0.85rem;"
+              >
+                {{ currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U' }}
+              </div>
+
+              <!-- Имя и роль -->
+              <div class="d-none d-sm-block text-left" style="line-height: 1.15;">
+                <div class="small font-weight-bold text-dark">{{ currentUser.name }}</div>
+                <span 
+                  class="badge px-1.5 py-0.5 font-weight-bold" 
+                  :class="{
+                    'badge-danger': currentUser.role === 'admin',
+                    'badge-info': currentUser.role === 'manager',
+                    'badge-success': currentUser.role === 'user'
+                  }"
+                  style="font-size: 0.6rem; letter-spacing: 0.05em;"
+                >
+                  {{ currentUser.role === 'admin' ? 'АДМИНИСТРАТОР' : (currentUser.role === 'manager' ? 'МЕНЕДЖЕР' : 'ПОКУПАТЕЛЬ') }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Кнопка «Профиль» -->
+            <button 
+              type="button"
+              class="btn btn-sm btn-outline-success font-weight-bold mr-2 px-2.5"
+              :class="{ 'active': currentView === 'profile' }"
+              @click="setRoute('profile')"
+              title="Перейти в личный кабинет"
+            >
+              Профиль
+            </button>
+
+            <!-- Кнопка «Выйти» -->
+            <button 
+              type="button"
+              class="btn btn-sm btn-outline-secondary px-2.5" 
+              @click="$emit('logout')" 
+              title="Выйти из учетной записи"
+            >
+              Выход
+            </button>
+
+          </div>
+
+          <!-- Гость (не авторизован) -->
+          <div v-else class="d-flex align-items-center">
+            <button 
+              class="btn text-white btn-sm px-3 shadow-sm font-weight-bold" 
+              style="background-color: var(--accent-brown);"
+              @click="setRoute('auth')"
+            >
+              Войти / Регистрация
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Мобильное раскрывающееся меню -->
+      <div v-if="mobileMenuOpen" class="d-lg-none bg-white border-top py-3 px-4 shadow-sm animate-fade-in">
+        <ul class="nav flex-column mb-0">
+          <li class="nav-item py-1">
+            <a href="#home" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('home')">Главная</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#table" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('table')">Каталог чая</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#excel-table" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('excel-table')">Таблица Excel</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#files" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('files')">Файлы хранилища</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#logs" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('logs')">Журнал действий</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#tailwind" class="nav-link text-success font-weight-bold px-0" @click.prevent="setRoute('tailwind')">
+              Лаборатория Tailwind (Уровни 1-4)
+            </a>
+          </li>
+          
+          <!-- Voyager Админ в мобильном меню ТОЛЬКО для role: 'admin' -->
+          <li class="nav-item py-1" v-if="currentUser && currentUser.role === 'admin'">
+            <a href="#admin" class="nav-link text-danger font-weight-bold px-0" @click.prevent="setRoute('admin')">
+              Voyager Админ
+            </a>
+          </li>
+
+          <!-- Ссылка на профиль в мобильном меню -->
+          <li class="nav-item py-1 border-top mt-2 pt-2" v-if="currentUser">
+            <a href="#profile" class="nav-link text-primary font-weight-bold px-0" @click.prevent="setRoute('profile')">
+              Мой профиль ({{ currentUser.name }})
+            </a>
+          </li>
+          <li class="nav-item py-1" v-if="currentUser">
+            <a href="#" class="nav-link text-danger px-0" @click.prevent="$emit('logout'); mobileMenuOpen = false;">
+              Выйти из аккаунта
+            </a>
+          </li>
+          <li class="nav-item py-1" v-else>
+            <a href="#auth" class="nav-link text-success font-weight-bold px-0" @click.prevent="setRoute('auth')">
+              Войти в систему
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+  `
+};

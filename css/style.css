@@ -1,0 +1,488 @@
+
+:root {
+  --bg-color: #F8F5EE;       
+  --text-main: #2C3531;      
+  --text-muted: #4B5563; /* Улучшенная контрастность по WCAG AA/AAA (было #6B7280) */
+  --accent-brown: #C17854;   
+  --accent-dark: #1E2A27;   
+
+  /* Дизайн-токены радиусов скругления */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.container {
+  max-width: 1280px;
+}
+
+.container--narrow {
+  max-width: 820px;
+}
+
+.container--subscribe {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 500;
+  text-align: center;
+  color: var(--accent-dark);
+}
+
+.section-title--left {
+  text-align: left;
+}
+
+
+.btn--accent {
+  background-color: var(--accent-brown);
+  color: #fff;
+}
+
+.btn--accent:hover {
+  background-color: #aa6543;
+  color: #fff;
+}
+
+.header .logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+}
+
+.nav-link.active {
+  color: var(--accent-brown) !important;
+  border-bottom: 2px solid var(--accent-brown);
+}
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--accent-dark);
+}
+
+.hero__img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Секция История */
+.history__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.history__text {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* Сетка продуктов */
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.card__img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.card__title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--accent-dark);
+}
+
+.card__price {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--accent-brown);
+  font-size: 1.05rem;
+}
+
+.card__desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Преимущества */
+.advantages__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.advantage-card {
+  border-right: 1px solid #E2DCCF;
+  padding-right: 1.25rem;
+}
+
+.advantage-card:last-child {
+  border-right: none;
+}
+
+.advantage-card__icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+}
+
+.advantage-card__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: var(--accent-dark);
+}
+
+.advantage-card__desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Цитата / Отзыв */
+.testimonial__quote {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.testimonial__author {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.testimonial__role {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-brown);
+  text-transform: uppercase;
+}
+
+/* Форма подписки */
+.subscribe__title {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--accent-dark);
+}
+
+.subscribe__input {
+  width: 100%;
+  max-width: 360px;
+  height: 48px;
+  padding: 0 1.25rem;
+  border: 1px solid #D1D5DB;
+  border-right: none;
+  background-color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  color: var(--text-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subscribe__input:focus {
+  border-color: var(--accent-brown);
+  box-shadow: 0 0 0 3px rgba(193, 120, 84, 0.15);
+}
+
+.subscribe__btn {
+  height: 48px;
+  padding: 0 1.75rem;
+  background-color: var(--accent-brown);
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.subscribe__btn:hover {
+  background-color: #A86240;
+}
+
+/* Подвал */
+.footer__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ EXCEL UPLOADER (DRAG-N-DROP)
+   ========================================================================== */
+.dropzone-area {
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dropzone-area:hover {
+  background-color: #f3ece1 !important;
+  border-color: #a45f3d !important;
+}
+
+.dropzone-active {
+  background-color: #faebd7 !important;
+  border-color: #28a745 !important;
+  transform: scale(1.01);
+}
+
+.dropzone-processing {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   КАСТОМНЫЕ МОДАЛЬНЫЕ ОКНА VUE
+   ========================================================================== */
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-dialog-custom {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  margin: 0;
+}
+
+.modal-dialog-custom.modal-lg {
+  max-width: 880px;
+}
+
+.modal-dialog-custom.modal-xl {
+  max-width: 1140px;
+}
+
+.modal-dialog-custom .modal-content {
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-dialog-custom .modal-body {
+  overflow-y: auto;
+  max-height: calc(90vh - 140px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ VOYAGER ADMIN PANEL
+   ========================================================================== */
+.voyager-sidebar {
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.active-voyager-item {
+  background-color: #1a2226 !important;
+  border-left: 4px solid #f89406 !important;
+  color: #ffffff !important;
+}
+
+.voyager-menu .nav-link {
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.voyager-menu .nav-link:hover {
+  background-color: #2c3b41;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ VUE-JSON-COMPARE DIFF
+   ========================================================================== */
+.bg-light-danger {
+  background-color: #fff5f5 !important;
+}
+
+.bg-light-success {
+  background-color: #f0fff4 !important;
+}
+
+.table-warning {
+  background-color: #fffaf0 !important;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 992px) {
+  .hero__container, .history__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .advantages__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .advantage-card {
+    border-right: none;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #E2DCCF;
+  }
+  .advantage-card:nth-last-child(-n+2) {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .voyager-admin-container {
+    flex-direction: column;
+  }
+  .voyager-sidebar {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .products__grid, .footer__container {
+    grid-template-columns: 1fr;
+  }
+  .advantages__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .advantage-card {
+    border-bottom: 1px solid #E2DCCF;
+    padding-bottom: 1.25rem;
+  }
+  .advantage-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .subscribe__form {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .subscribe__input {
+    width: 100%;
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid #D1D5DB;
+    margin-bottom: 0.75rem;
+  }
+  .subscribe__btn {
+    width: 100%;
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Улучшенные стили для адаптивных таблиц */
+.table-responsive {
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  scrollbar-width: thin;
+  scrollbar-color: #D1D5DB transparent;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+/* Карточки чая с эффектом Clean Design */
+.product-card-clean {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.product-card-clean:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08) !important;
+}
+

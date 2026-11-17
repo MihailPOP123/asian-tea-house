@@ -29,6 +29,7 @@ window.TableView = {
       searchQuery: '',
       selectedCategory: 'all',
       sortBy: 'default',
+      displayMode: 'grid', // 'grid' (плитки товаров по умолчанию) | 'table' (таблица)
 
       // Пагинация (требование: если > 10 строк — постраничная загрузка)
       currentPage: 1,
@@ -310,10 +311,10 @@ window.TableView = {
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom">
           <div>
             <h2 class="font-weight-bold mb-1" style="font-family: var(--font-serif); color: var(--accent-dark);">
-              Таблица сортов азиатского чая (Управление данными)
+              Каталог сортов азиатского чая
             </h2>
             <p class="text-muted small mb-0">
-              Полнофункциональная таблица управления товарами на Vue.js и Bootstrap 4 с асинхронным обменом данными
+              Коллекция премиального чая: плиточная витрина с поиском, фильтрацией, пагинацией и управлением товарами
             </p>
           </div>
 
@@ -332,7 +333,7 @@ window.TableView = {
               class="btn btn-outline-success font-weight-bold px-3 py-2 shadow-sm"
               style="border-radius: var(--radius-sm);"
               @click="exportExcel"
-              title="Выгрузить текущую таблицу в Excel"
+              title="Выгрузить текущую коллекцию в Excel"
             >
               Экспорт в Excel
             </button>
@@ -342,7 +343,7 @@ window.TableView = {
         <!-- Предупреждение для неавторизованных пользователей -->
         <div v-if="!canModify" class="alert alert-warning d-flex align-items-center justify-content-between shadow-sm mb-4" style="border-radius: var(--radius-md);">
           <div>
-            <strong>Внимание!</strong> Вы просматриваете таблицу в режиме чтения.
+            <strong>Внимание!</strong> Вы просматриваете каталог в режиме чтения.
             Для добавления, изменения и удаления данных требуется войти в учетную запись.
           </div>
           <button class="btn btn-warning btn-sm font-weight-bold ml-3" style="border-radius: var(--radius-sm);" @click="$emit('navigate', 'auth')">
@@ -350,12 +351,12 @@ window.TableView = {
           </button>
         </div>
 
-        <!-- Фильтры, поиск и режимы отображения -->
+        <!-- Фильтры, поиск и переключение режимов отображения (Плитка / Таблица) -->
         <div class="card border-0 shadow-sm mb-4 bg-white" style="border-radius: var(--radius-md);">
           <div class="card-body p-3">
             <div class="row align-items-center">
               <!-- Поиск с кнопкой быстрой очистки -->
-              <div class="col-md-4 mb-2 mb-md-0">
+              <div class="col-lg-4 col-md-6 mb-2 mb-lg-0">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-white small font-weight-bold text-muted border-right-0" style="border-radius: var(--radius-sm) 0 0 var(--radius-sm);">
@@ -378,7 +379,7 @@ window.TableView = {
               </div>
 
               <!-- Фильтр по категории -->
-              <div class="col-md-3 mb-2 mb-md-0">
+              <div class="col-lg-3 col-md-6 mb-2 mb-lg-0">
                 <select class="form-control custom-select" style="border-radius: var(--radius-sm);" v-model="selectedCategory">
                   <option value="all">Все категории ({{ teas.length }})</option>
                   <option v-for="cat in categories.filter(c => c !== 'all')" :key="cat" :value="cat">
@@ -388,7 +389,7 @@ window.TableView = {
               </div>
 
               <!-- Сортировка -->
-              <div class="col-md-2 mb-2 mb-md-0">
+              <div class="col-lg-2 col-md-6 mb-2 mb-lg-0">
                 <select class="form-control custom-select" style="border-radius: var(--radius-sm);" v-model="sortBy">
                   <option value="default">Сортировка: по умолчанию</option>
                   <option value="price_asc">Цена: по возрастанию</option>
@@ -398,24 +399,49 @@ window.TableView = {
                 </select>
               </div>
 
-              <!-- Переключатель режима: Пагинация vs Ленивая загрузка -->
-              <div class="col-md-3 text-md-right">
+              <!-- Переключатели: Режим плитки/таблицы + Режим пагинации/ленивой загрузки -->
+              <div class="col-lg-3 col-md-6 text-lg-right d-flex justify-content-lg-end align-items-center flex-wrap gap-2">
+                <!-- Переключатель Плитка / Таблица (по умолчанию Плитка) -->
+                <div class="btn-group btn-group-sm mr-2" style="border-radius: var(--radius-sm); overflow: hidden;">
+                  <button 
+                    type="button" 
+                    class="btn"
+                    :class="displayMode === 'grid' ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
+                    @click="displayMode = 'grid'"
+                    title="Отображение плитками товаров"
+                  >
+                    Плитка
+                  </button>
+                  <button 
+                    type="button" 
+                    class="btn"
+                    :class="displayMode === 'table' ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
+                    @click="displayMode = 'table'"
+                    title="Отображение таблицей"
+                  >
+                    Таблица
+                  </button>
+                </div>
+
+                <!-- Режим подгрузки: Постраничный vs Ленивый -->
                 <div class="btn-group btn-group-sm" style="border-radius: var(--radius-sm); overflow: hidden;">
                   <button 
                     type="button" 
                     class="btn"
                     :class="!lazyMode ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
                     @click="toggleViewMode('pagination')"
+                    title="Постраничный режим"
                   >
-                    Постраничный режим
+                    Стр.
                   </button>
                   <button 
                     type="button" 
                     class="btn"
                     :class="lazyMode ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
                     @click="toggleViewMode('lazy')"
+                    title="Ленивая подгрузка"
                   >
-                    Ленивая подгрузка
+                    Ленивая
                   </button>
                 </div>
               </div>
@@ -432,8 +458,132 @@ window.TableView = {
           ></ad-slot>
         </div>
 
-        <!-- Таблица данных (Bootstrap 4) -->
-        <div class="card border-0 shadow-sm overflow-hidden bg-white" style="border-radius: var(--radius-md);">
+        <!-- Состояние загрузки -->
+        <div v-if="isLoading" class="text-center py-5">
+          <div class="spinner-border text-success" role="status"></div>
+          <div class="mt-2 text-muted small">Загрузка сортов чая...</div>
+        </div>
+
+        <!-- Состояние пустого списка -->
+        <div v-else-if="displayedTeas.length === 0" class="card border-0 shadow-sm p-5 text-center bg-white my-3" style="border-radius: var(--radius-md);">
+          <h4 class="font-weight-bold text-dark mb-2">Ничего не найдено</h4>
+          <p class="text-muted small mb-3">Попробуйте изменить параметры поиска или фильтрации</p>
+          <div>
+            <button class="btn btn-outline-dark btn-sm px-3" @click="searchQuery = ''; selectedCategory = 'all'">
+              Сбросить фильтры
+            </button>
+          </div>
+        </div>
+
+        <!-- РЕЖИМ 1: ПЛИТКИ ТОВАРОВ (GRID) ПО УМОЛЧАНИЮ -->
+        <div v-else-if="displayMode === 'grid'" class="products-grid-wrapper mb-4">
+          <div class="row">
+            <div 
+              v-for="(tea, index) in displayedTeas" 
+              :key="tea.id" 
+              class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 d-flex align-items-stretch"
+            >
+              <article 
+                class="card h-100 border-0 shadow-sm rounded-lg overflow-hidden bg-white w-100 d-flex flex-column product-tile-card"
+                style="border-radius: var(--radius-md); border: 1px solid #EFE8DC; transition: transform 0.25s ease, box-shadow 0.25s ease;"
+              >
+                <!-- Изображение товара -->
+                <div class="product-tile__img-wrap position-relative" style="height: 210px; background: #FAF7F2; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img 
+                    :src="tea.image" 
+                    :alt="tea.title" 
+                    class="product-tile__img" 
+                    style="max-height: 175px; max-width: 88%; object-fit: contain; transition: transform 0.3s ease;"
+                  >
+                  <!-- Порядковый номер / Индекс -->
+                  <span class="position-absolute small font-weight-bold text-muted" style="top: 10px; left: 14px; font-size: 0.75rem;">
+                    #{{ lazyMode ? index + 1 : ((currentPage - 1) * itemsPerPage) + index + 1 }}
+                  </span>
+                  <!-- Рейтинг товара -->
+                  <span class="position-absolute small font-weight-bold text-dark" style="top: 10px; right: 14px; font-size: 0.8rem;">
+                    Рейтинг: {{ tea.rating }}
+                  </span>
+                </div>
+
+                <!-- Контент карточки товара -->
+                <div class="card-body p-3.5 d-flex flex-column flex-grow-1 justify-content-between">
+                  <div>
+                    <!-- Категория и происхождение -->
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="text-muted small font-weight-bold text-uppercase tracking-wider" style="font-size: 0.72rem;">
+                        {{ tea.category }}
+                      </span>
+                      <span class="text-muted small font-weight-medium" style="font-size: 0.75rem;">
+                        {{ tea.origin || 'Восточная Азия' }}
+                      </span>
+                    </div>
+
+                    <!-- Название чая -->
+                    <h5 class="card-title font-weight-bold text-dark mb-2" style="font-family: var(--font-serif); font-size: 1.12rem; line-height: 1.35;">
+                      {{ tea.title }}
+                    </h5>
+
+                    <!-- Описание с ограничением в 2 строки -->
+                    <p 
+                      class="card-text text-muted small mb-3" 
+                      style="line-height: 1.5; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;" 
+                      :title="tea.desc"
+                    >
+                      {{ tea.desc }}
+                    </p>
+                  </div>
+
+                  <div>
+                    <!-- Блок цены и остатка на складе -->
+                    <div class="d-flex justify-content-between align-items-baseline pt-2.5 pb-2 mb-2 border-top">
+                      <div>
+                        <span class="small text-muted d-block" style="font-size: 0.72rem; line-height: 1;">Цена</span>
+                        <span class="h4 font-weight-bold mb-0" style="font-family: var(--font-serif); color: var(--accent-dark); font-size: 1.35rem;">
+                          \${{ tea.price.toFixed(2) }}
+                        </span>
+                      </div>
+                      <div class="text-right">
+                        <span 
+                          class="font-weight-bold small d-block" 
+                          :class="{
+                            'text-success': tea.stock > 10,
+                            'text-warning': tea.stock > 0 && tea.stock <= 10,
+                            'text-danger': tea.stock === 0
+                          }"
+                        >
+                          {{ tea.stock > 10 ? 'В наличии: ' + tea.stock + ' шт.' : (tea.stock > 0 ? 'Мало: ' + tea.stock + ' шт.' : 'Закончился') }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Кнопки управления карточкой товара -->
+                    <div class="d-flex gap-2 pt-2 border-top">
+                      <button 
+                        class="btn btn-sm btn-outline-dark flex-grow-1 font-weight-bold mr-2" 
+                        style="border-radius: var(--radius-sm); font-size: 0.8rem; padding: 6px 10px;"
+                        @click="openEditModal(tea)"
+                        title="Редактировать сорт чая"
+                      >
+                        Редактировать
+                      </button>
+                      <button 
+                        class="btn btn-sm btn-outline-danger font-weight-bold" 
+                        style="border-radius: var(--radius-sm); font-size: 0.8rem; padding: 6px 12px;"
+                        @click="confirmDelete(tea)"
+                        title="Удалить сорт чая"
+                      >
+                        Удалить
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- РЕЖИМ 2: ОТОБРАЖЕНИЕ В ВИДЕ ТАБЛИЦЫ (TABLE) -->
+        <div v-else-if="displayMode === 'table'" class="card border-0 shadow-sm overflow-hidden bg-white mb-4" style="border-radius: var(--radius-md);">
           <div class="table-responsive">
             <table class="table table-hover table-striped mb-0 align-middle">
               <thead class="thead-dark" style="background-color: var(--accent-dark);">
@@ -450,20 +600,6 @@ window.TableView = {
                 </tr>
               </thead>
               <tbody>
-                <tr v-if="isLoading">
-                  <td colspan="9" class="text-center py-5">
-                    <div class="spinner-border text-warning" role="status"></div>
-                    <div class="mt-2 text-muted small">Асинхронная загрузка данных...</div>
-                  </td>
-                </tr>
-
-                <tr v-else-if="displayedTeas.length === 0">
-                  <td colspan="9" class="text-center py-5 text-muted">
-                    <h5>Ничего не найдено</h5>
-                    <p class="small mb-0">Попробуйте изменить параметры поиска или фильтрации</p>
-                  </td>
-                </tr>
-
                 <tr v-for="(tea, index) in displayedTeas" :key="tea.id">
                   <td class="text-muted small font-weight-bold">
                     {{ lazyMode ? index + 1 : ((currentPage - 1) * itemsPerPage) + index + 1 }}
@@ -508,7 +644,6 @@ window.TableView = {
                     Рейтинг: {{ tea.rating }}
                   </td>
                   <td class="text-right">
-                    <!-- Разделенные кнопки действий по Закону Фиттса для предотвращения случайного удаления -->
                     <div class="d-flex justify-content-end align-items-center">
                       <button 
                         class="btn btn-sm btn-outline-primary px-2.5 mr-1" 
@@ -532,15 +667,17 @@ window.TableView = {
               </tbody>
             </table>
           </div>
+        </div>
 
-          <!-- Нижняя панель таблицы: Пагинация ИЛИ Кнопка ленивой подгрузки -->
-          <div class="card-footer bg-light d-flex flex-wrap justify-content-between align-items-center py-3">
+        <!-- УНИВЕРСАЛЬНАЯ ПАНЕЛЬ: ПАГИНАЦИЯ / ЛЕНИВАЯ ПОДГРУЗКА ДЛЯ ПЛИТОК И ТАБЛИЦЫ -->
+        <div class="card border-0 shadow-sm bg-white p-3 mb-4" style="border-radius: var(--radius-md);">
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="text-muted small mb-2 mb-md-0 d-flex align-items-center flex-wrap">
               <span>Показано <b>{{ displayedTeas.length }}</b> из <b>{{ totalRows }}</b> сортов чая</span>
               <span v-if="lazyMode" class="text-info font-weight-bold ml-2">Режим: Ленивая подгрузка</span>
               <span v-else class="text-muted font-weight-bold ml-2">Режим: Пагинация</span>
 
-              <!-- Деликатная ссылка восстановления демо-данных (убрана из верхнего тулбара) -->
+              <!-- Ссылка восстановления демо-данных -->
               <button 
                 type="button" 
                 class="btn btn-link btn-sm text-muted ml-3 p-0 text-decoration-none" 
@@ -551,7 +688,7 @@ window.TableView = {
               </button>
             </div>
 
-            <!-- 1. ПОСТРАНИЧНАЯ ЗАГРУЗКА (ТРЕБОВАНИЕ: ЕСЛИ БОЛЬШЕ 10 СТРОК — ПАГИНАЦИЯ) -->
+            <!-- 1. ПОСТРАНИЧНАЯ ЗАГРУЗКА (ЕСЛИ БОЛЬШЕ 10 СТРОК — ПАГИНАЦИЯ) -->
             <div v-if="!lazyMode && totalRows > itemsPerPage">
               <nav aria-label="Page navigation">
                 <ul class="pagination pagination-sm mb-0">

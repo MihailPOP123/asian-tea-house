@@ -66,104 +66,7 @@ window.HomeView = {
         </div>
       </section>
 
-      <!-- 2. Секция быстрого доступа к ключевым модулям проекта -->
-      <section class="py-5" style="background: #FAF7F2; border-top: 1px solid #E5E0D8; border-bottom: 1px solid #E5E0D8;">
-        <div class="container">
-          <div class="text-center mb-4">
-            <div class="text-uppercase font-weight-bold text-muted small mb-2" style="letter-spacing: 0.12em;">
-              Навигация и функционал проекта
-            </div>
-            <h2 class="font-weight-bold" style="font-family: var(--font-serif); color: var(--accent-dark);">
-              Ключевые разделы системы
-            </h2>
-          </div>
-
-          <div class="row">
-            <!-- Карточка 1: Лаборатория Tailwind CSS 3.4+ -->
-            <div class="col-md-4 mb-3">
-              <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-success font-weight-bold small tracking-wider text-uppercase">Tailwind v3.4+</span>
-                    <span class="small text-muted font-weight-bold">14 заданий</span>
-                  </div>
-                  <h5 class="font-weight-bold text-dark mb-2">Лаборатория Tailwind</h5>
-                  <p class="text-muted small mb-3" style="line-height: 1.5;">
-                    Уровни 1-4: Профиль, навбар без JS, сетка товаров, hero с градиентом, pricing, сайдбар, регистрация, чат, канбан, лендинг, dark mode, дашборд 12 колонок, степпер с has-[:checked], e-commerce и Storybook дизайн-система.
-                  </p>
-                </div>
-                <button 
-                  type="button" 
-                  class="btn btn-success btn-block font-weight-bold py-2 shadow-sm"
-                  @click="$emit('navigate', 'tailwind')"
-                >
-                  Перейти в Лабораторию &rarr;
-                </button>
-              </div>
-            </div>
-
-            <!-- Карточка 2: Загрузка и таблица Excel -->
-            <div class="col-md-4 mb-3">
-              <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-dark font-weight-bold small tracking-wider text-uppercase">Excel Модуль</span>
-                    <span class="small text-muted font-weight-bold">XLSX / XLS</span>
-                  </div>
-                  <h5 class="font-weight-bold text-dark mb-2">Загрузка и таблица Excel</h5>
-                  <p class="text-muted small mb-3" style="line-height: 1.5;">
-                    Drag-n-drop и файловый диалог, проверка формата и модальное окно ошибки, парсинг данных, отдельная таблица каталога, хранилище файлов и экспорт в Excel.
-                  </p>
-                </div>
-                <button 
-                  type="button" 
-                  class="btn text-white btn-block font-weight-bold py-2 shadow-sm"
-                  style="background-color: var(--accent-brown);"
-                  @click="$emit('navigate', 'excel-table')"
-                >
-                  Открыть модуль Excel &rarr;
-                </button>
-              </div>
-            </div>
-
-            <!-- Карточка 3: Личный кабинет и Профиль -->
-            <div class="col-md-4 mb-3">
-              <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-info font-weight-bold small tracking-wider text-uppercase">Личный кабинет</span>
-                    <span class="small text-muted font-weight-bold">User / Admin</span>
-                  </div>
-                  <h5 class="font-weight-bold text-dark mb-2">Профиль пользователя</h5>
-                  <p class="text-muted small mb-3" style="line-height: 1.5;">
-                    Управление учетной записью, просмотр и редактирование личных данных, смена пароля, история заказов и переключение ролей для проверки прав доступа.
-                  </p>
-                </div>
-                <button 
-                  type="button" 
-                  class="btn btn-outline-dark btn-block font-weight-bold py-2"
-                  @click="$emit('navigate', 'profile')"
-                >
-                  Открыть свой профиль &rarr;
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Интеграция рекламного блока (Задание 1: AdSlot) -->
-      <section class="py-3" style="background-color: var(--bg-color);">
-        <div class="container d-flex justify-content-center">
-          <ad-slot 
-            preset="banner" 
-            label="Спонсорский блок чайного клуба" 
-            sublabel="Премиальные чайные церемонии и аксессуары из фарфора (Leaderboard 728 × 90)"
-          ></ad-slot>
-        </div>
-      </section>
-
-      <!-- 3. История (Наша история) -->
+      <!-- 2. История (Наша история) -->
       <section class="history py-5" id="history">
         <div class="container history__container">
           <div class="history__media">
@@ -190,7 +93,7 @@ window.HomeView = {
               <p class="text-muted mb-0">Свежий урожай и церемониальные сорта этого сезона</p>
             </div>
             <button @click="$emit('navigate', 'table')" class="btn btn-outline-dark btn-sm px-3">
-              Все сорта в таблице ({{ teas.length }}) &rarr;
+              Все сорта в каталоге ({{ teas.length }}) &rarr;
             </button>
           </div>
 
@@ -309,7 +212,7 @@ window.HomeView = {
             <h4 class="footer__heading text-warning">СТРАНИЦЫ СИСТЕМЫ</h4>
             <ul class="list-unstyled small">
               <li class="mb-1"><a href="#home" class="text-light" @click.prevent="$emit('navigate', 'home')">Главная страница</a></li>
-              <li class="mb-1"><a href="#table" class="text-light" @click.prevent="$emit('navigate', 'table')">Каталог чая (Таблица CRUD)</a></li>
+              <li class="mb-1"><a href="#table" class="text-light" @click.prevent="$emit('navigate', 'table')">Каталог сортов чая</a></li>
               <li class="mb-1"><a href="#excel-table" class="text-light" @click.prevent="$emit('navigate', 'excel-table')">Модуль Excel (Загрузка)</a></li>
               <li class="mb-1"><a href="#tailwind" class="text-light" @click.prevent="$emit('navigate', 'tailwind')">Лаборатория Tailwind (Уровни 1-4)</a></li>
               <li class="mb-1"><a href="#logs" class="text-light" @click.prevent="$emit('navigate', 'logs')">Журнал изменений (Log)</a></li>

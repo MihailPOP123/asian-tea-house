@@ -34,7 +34,7 @@ window.ErrorModal = {
           </div>
           <div class="modal-body p-4">
             <div class="text-center mb-3">
-              <div class="badge badge-danger p-2 mb-2 text-uppercase font-weight-bold" style="font-size: 0.85rem;">
+              <div class="text-danger font-weight-bold text-uppercase small mb-2 tracking-wider">
                 Ошибка валидации
               </div>
               <h5 class="text-danger font-weight-bold">Выбран недопустимый тип файла</h5>
@@ -52,7 +52,7 @@ window.ErrorModal = {
               </div>
               <div class="d-flex justify-content-between small py-1 border-bottom">
                 <span class="text-muted">MIME-тип:</span>
-                <span class="badge badge-secondary font-monospace">{{ errorInfo.fileType || 'Не определен' }}</span>
+                <span class="text-dark font-weight-bold font-monospace">{{ errorInfo.fileType || 'Не определен' }}</span>
               </div>
               <div class="d-flex justify-content-between small py-1">
                 <span class="text-muted">Размер:</span>

@@ -239,7 +239,7 @@ window.TeaModal = {
                     <h6 class="font-italic font-weight-bold text-truncate mb-1" style="font-family: var(--font-serif);">
                       {{ formData.title || 'Название чая' }}
                     </h6>
-                    <div class="badge badge-warning text-dark font-weight-bold align-self-center mb-1">
+                    <div class="small text-muted font-weight-bold align-self-center mb-1">
                       {{ formData.category }}
                     </div>
                     <div class="text-danger font-weight-bold">

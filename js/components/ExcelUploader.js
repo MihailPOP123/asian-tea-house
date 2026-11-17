@@ -253,8 +253,8 @@ window.ExcelUploader = {
       <!-- Дополнительные действия -->
       <div class="d-flex flex-wrap justify-content-between align-items-center mt-3 pt-2 border-top small">
         <div class="text-muted mb-2 mb-md-0">
-          <span class="badge badge-success mr-1">.XLSX</span>
-          <span class="badge badge-info mr-2">.XLS</span>
+          <span class="text-success font-weight-bold mr-1">.XLSX</span>
+          <span class="text-info font-weight-bold mr-2">.XLS</span>
           <em>Любой другой формат вызовет предупреждающее модальное окно.</em>
         </div>
 

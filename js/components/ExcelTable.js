@@ -298,8 +298,8 @@ window.ExcelTable = {
             <h4 class="font-weight-bold mb-0 mr-3" style="font-family: var(--font-serif); color: var(--accent-dark);">
               Спроектированная таблица данных из Excel
             </h4>
-            <span class="badge badge-success px-2 py-1 font-weight-normal">Отдельная таблица</span>
-            <span class="badge badge-secondary ml-2 px-2 py-1 font-weight-bold">Всего строк: {{ rows.length }}</span>
+            <span class="text-success font-weight-bold small mr-2">Отдельная таблица</span>
+            <span class="text-muted small font-weight-bold">&middot; Всего строк: {{ rows.length }}</span>
           </div>
           <p class="text-muted small mb-0">
             Данные, автоматически распарсенные из файлов .XLSX и .XLS, заносятся в данную специализированную таблицу
@@ -419,7 +419,7 @@ window.ExcelTable = {
                 {{ ((currentPage - 1) * itemsPerPage) + index + 1 }}
               </td>
               <td>
-                <span class="badge badge-light border text-truncate text-secondary font-monospace" style="max-width: 150px;" :title="row.sourceFile">
+                <span class="text-muted small font-monospace text-truncate d-inline-block" style="max-width: 150px;" :title="row.sourceFile">
                   {{ row.sourceFile || 'Excel файл' }}
                 </span>
               </td>
@@ -432,7 +432,7 @@ window.ExcelTable = {
                 </div>
               </td>
               <td>
-                <span class="badge badge-light border text-secondary font-weight-normal px-2 py-1">
+                <span class="text-muted small font-weight-medium">
                   {{ row.category }}
                 </span>
               </td>
@@ -444,11 +444,11 @@ window.ExcelTable = {
               </td>
               <td class="text-center">
                 <span 
-                  class="badge" 
+                  class="font-weight-bold" 
                   :class="{
-                    'badge-success': row.stock > 10,
-                    'badge-warning': row.stock > 0 && row.stock <= 10,
-                    'badge-danger': row.stock === 0
+                    'text-success': row.stock > 10,
+                    'text-warning': row.stock > 0 && row.stock <= 10,
+                    'text-danger': row.stock === 0
                   }"
                 >
                   {{ row.stock }} шт.

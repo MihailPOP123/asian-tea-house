@@ -20,16 +20,16 @@ window.ToastNotification = {
           role="alert"
         >
           <div class="d-flex align-items-start">
-            <span class="badge mr-2 mt-1" :class="{
-              'badge-success': toast.type === 'success',
-              'badge-danger': toast.type === 'danger',
-              'badge-warning text-dark': toast.type === 'warning',
-              'badge-info': !toast.type || toast.type === 'info'
+            <span class="mr-2 mt-1 font-weight-bold small text-uppercase" :class="{
+              'text-success': toast.type === 'success',
+              'text-danger': toast.type === 'danger',
+              'text-warning': toast.type === 'warning',
+              'text-info': !toast.type || toast.type === 'info'
             }">
-              <span v-if="toast.type === 'success'">Успешно</span>
-              <span v-else-if="toast.type === 'danger'">Ошибка</span>
-              <span v-else-if="toast.type === 'warning'">Внимание</span>
-              <span v-else>Инфо</span>
+              <span v-if="toast.type === 'success'">Успешно:</span>
+              <span v-else-if="toast.type === 'danger'">Ошибка:</span>
+              <span v-else-if="toast.type === 'warning'">Внимание:</span>
+              <span v-else>Инфо:</span>
             </span>
             <div>
               <div v-if="toast.title" class="font-weight-bold small text-uppercase mb-1">{{ toast.title }}</div>

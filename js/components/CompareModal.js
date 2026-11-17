@@ -66,7 +66,7 @@ window.CompareModal = {
                 Сравнение состояния объекта (JSON Diff Compare)
               </h5>
               <div class="small text-muted mt-1" v-if="logEntry">
-                Запись #{{ logEntry.id }} | Действие: <span class="badge badge-info">{{ logEntry.actionName }}</span>
+                Запись #{{ logEntry.id }} | Действие: <span class="text-info font-weight-bold">{{ logEntry.actionName }}</span>
                 | Объект: <strong>{{ logEntry.entityTitle || logEntry.entity }}</strong>
               </div>
             </div>
@@ -81,13 +81,13 @@ window.CompareModal = {
             </div>
 
             <div v-else>
-              <!-- Легенда изменений -->
-              <div class="d-flex align-items-center mb-3 p-2 bg-light rounded border">
+              <!-- Легенда изменений (чистый текст) -->
+              <div class="d-flex align-items-center mb-3 p-2 bg-light rounded border flex-wrap">
                 <span class="small font-weight-bold mr-3 text-secondary">Легенда:</span>
-                <span class="badge badge-danger mr-2">Удалено / Старое</span>
-                <span class="badge badge-success mr-2">Добавлено / Новое</span>
-                <span class="badge badge-warning mr-2">Изменено значение</span>
-                <span class="badge badge-secondary">Без изменений</span>
+                <span class="text-danger font-weight-bold small mr-3">&bull; Удалено / Старое</span>
+                <span class="text-success font-weight-bold small mr-3">&bull; Добавлено / Новое</span>
+                <span class="text-warning font-weight-bold small mr-3">&bull; Изменено значение</span>
+                <span class="text-muted font-weight-bold small">&bull; Без изменений</span>
               </div>
 
               <!-- Табличное визуальное сравнение полей -->
@@ -116,9 +116,9 @@ window.CompareModal = {
                       >
                         <td class="font-weight-bold font-monospace small">
                           <code>{{ key }}</code>
-                          <span v-if="isKeyAdded(key)" class="badge badge-success float-right">+ new</span>
-                          <span v-else-if="isKeyRemoved(key)" class="badge badge-danger float-right">- deleted</span>
-                          <span v-else-if="isKeyChanged(key)" class="badge badge-warning float-right">~ changed</span>
+                          <span v-if="isKeyAdded(key)" class="text-success font-weight-bold small float-right">+ new</span>
+                          <span v-else-if="isKeyRemoved(key)" class="text-danger font-weight-bold small float-right">- deleted</span>
+                          <span v-else-if="isKeyChanged(key)" class="text-warning font-weight-bold small float-right">~ changed</span>
                         </td>
                         <td class="font-monospace small bg-light-danger" style="white-space: pre-wrap; word-break: break-all;">
                           {{ logEntry.oldState ? formatVal(logEntry.oldState[key]) : '—' }}

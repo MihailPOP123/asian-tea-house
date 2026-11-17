@@ -155,7 +155,7 @@ window.AppHeader = {
                 @click.prevent="setRoute('tailwind')"
               >
                 <span>Лаборатория Tailwind</span>
-                <span class="badge badge-success ml-1.5" style="font-size: 0.65rem;">3.4+</span>
+                <span class="text-success font-weight-bold ml-1.5" style="font-size: 0.72rem; letter-spacing: 0.05em;">v3.4</span>
               </a>
             </li>
 
@@ -201,15 +201,15 @@ window.AppHeader = {
               <div class="d-none d-sm-block text-left" style="line-height: 1.15;">
                 <div class="small font-weight-bold text-dark">{{ currentUser.name }}</div>
                 <span 
-                  class="badge px-1.5 py-0.5 font-weight-bold" 
+                  class="font-weight-bold" 
                   :class="{
-                    'badge-danger': currentUser.role === 'admin',
-                    'badge-info': currentUser.role === 'manager',
-                    'badge-success': currentUser.role === 'user'
+                    'text-danger': currentUser.role === 'admin',
+                    'text-info': currentUser.role === 'manager',
+                    'text-success': currentUser.role === 'user'
                   }"
-                  style="font-size: 0.6rem; letter-spacing: 0.05em;"
+                  style="font-size: 0.65rem; letter-spacing: 0.05em;"
                 >
-                  {{ currentUser.role === 'admin' ? 'АДМИНИСТРАТОР' : (currentUser.role === 'manager' ? 'МЕНЕДЖЕР' : 'ПОКУПАТЕЛЬ') }}
+                  {{ currentUser.role === 'admin' ? 'Администратор' : (currentUser.role === 'manager' ? 'Менеджер' : 'Покупатель') }}
                 </span>
               </div>
             </div>

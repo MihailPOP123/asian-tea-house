@@ -31,9 +31,9 @@ window.HomeView = {
       <section class="hero py-5" style="background-color: var(--bg-color);">
         <div class="container hero__container">
           <div class="hero__content">
-            <span class="d-inline-block px-3 py-1 mb-3 text-uppercase font-weight-bold" style="letter-spacing: 0.12em; font-size: 0.75rem; background: #EFE8DC; color: var(--accent-dark); border-radius: 9999px;">
-              Традиции Востока · Премиум Сбор
-            </span>
+            <div class="text-uppercase font-weight-bold text-muted small mb-3" style="letter-spacing: 0.15em; font-size: 0.8rem;">
+              Традиции Востока &middot; Премиум сбор
+            </div>
             <h1 class="hero__title mb-3">
               Откройте для себя искусство настоящего азиатского чая
             </h1>
@@ -70,9 +70,9 @@ window.HomeView = {
       <section class="py-5" style="background: #FAF7F2; border-top: 1px solid #E5E0D8; border-bottom: 1px solid #E5E0D8;">
         <div class="container">
           <div class="text-center mb-4">
-            <span class="badge badge-warning text-dark font-weight-bold px-3 py-1 mb-2 text-uppercase" style="letter-spacing: 0.1em;">
+            <div class="text-uppercase font-weight-bold text-muted small mb-2" style="letter-spacing: 0.12em;">
               Навигация и функционал проекта
-            </span>
+            </div>
             <h2 class="font-weight-bold" style="font-family: var(--font-serif); color: var(--accent-dark);">
               Ключевые разделы системы
             </h2>
@@ -84,7 +84,7 @@ window.HomeView = {
               <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
                 <div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="badge badge-success px-2 py-1 font-weight-bold">Tailwind v3.4+</span>
+                    <span class="text-success font-weight-bold small tracking-wider text-uppercase">Tailwind v3.4+</span>
                     <span class="small text-muted font-weight-bold">14 заданий</span>
                   </div>
                   <h5 class="font-weight-bold text-dark mb-2">Лаборатория Tailwind</h5>
@@ -107,7 +107,7 @@ window.HomeView = {
               <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
                 <div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="badge badge-warning text-dark px-2 py-1 font-weight-bold">Excel Модуль</span>
+                    <span class="text-dark font-weight-bold small tracking-wider text-uppercase">Excel Модуль</span>
                     <span class="small text-muted font-weight-bold">XLSX / XLS</span>
                   </div>
                   <h5 class="font-weight-bold text-dark mb-2">Загрузка и таблица Excel</h5>
@@ -131,7 +131,7 @@ window.HomeView = {
               <div class="card h-100 border-0 shadow-sm rounded-lg p-4 bg-white d-flex flex-column justify-content-between">
                 <div>
                   <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="badge badge-info px-2 py-1 font-weight-bold">Личный кабинет</span>
+                    <span class="text-info font-weight-bold small tracking-wider text-uppercase">Личный кабинет</span>
                     <span class="small text-muted font-weight-bold">User / Admin</span>
                   </div>
                   <h5 class="font-weight-bold text-dark mb-2">Профиль пользователя</h5>
@@ -211,7 +211,7 @@ window.HomeView = {
                     <h3 class="card__title mb-0" style="font-size: 1.05rem;">{{ tea.title }}</h3>
                     <span class="card__price font-weight-bold">\${{ tea.price.toFixed(2) }}</span>
                   </div>
-                  <div class="badge mb-2 font-weight-normal px-2 py-1" style="background: #EFE8DC; color: var(--accent-dark); border-radius: 4px;">
+                  <div class="small text-muted font-weight-medium mb-2">
                     {{ tea.category }}
                   </div>
                   <p class="card__desc small text-muted mb-3" style="min-height: 55px;">

@@ -118,9 +118,9 @@ window.KanbanBoard = {
             <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <span>{{ col.title }}</span>
             </h3>
-            <!-- Счётчик задач -->
-            <span :class="col.badgeColor" class="px-2.5 py-0.5 rounded-full text-xs font-bold">
-              {{ col.tasks.length }}
+            <!-- Счётчик задач (чистый текст) -->
+            <span class="text-xs font-bold text-slate-500 dark:text-slate-400">
+              ({{ col.tasks.length }})
             </span>
           </div>
 
@@ -131,9 +131,9 @@ window.KanbanBoard = {
               :key="task.id"
               class="group bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-200 cursor-pointer"
             >
-              <!-- Верхняя строка карточки: drag-handle визуальный + тег категории -->
+              <!-- Верхняя строка карточки: drag-handle визуальный + тег категории (чистый текст) -->
               <div class="flex items-center justify-between mb-2">
-                <span :class="task.tagColor" class="text-[11px] font-semibold px-2 py-0.5 rounded-md">
+                <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                   {{ task.tag }}
                 </span>
 

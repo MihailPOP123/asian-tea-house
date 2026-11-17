@@ -126,16 +126,12 @@ window.PricingTable = {
               : 'bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-md'
           ]"
         >
-          <!-- Бейдж "Popular" для Pro тарифа -->
-          <div v-if="plan.badge" class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span class="px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md">
-              {{ plan.badge }}
-            </span>
-          </div>
-
           <div class="space-y-6">
             <!-- Заголовок и описание тарифа -->
             <div>
+              <div v-if="plan.badge" class="mb-1">
+                <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">{{ plan.badge }}</span>
+              </div>
               <h3 class="text-xl font-bold text-slate-900 dark:text-white">{{ plan.name }}</h3>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 min-h-[32px]">{{ plan.description }}</p>
             </div>

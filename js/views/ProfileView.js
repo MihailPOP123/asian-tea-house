@@ -219,18 +219,18 @@ window.ProfileView = {
                 <h5 class="font-weight-bold mb-1">{{ currentUser.name }}</h5>
                 <p class="small mb-2" style="color: rgba(255, 255, 255, 0.9); font-size: 0.85rem;">{{ currentUser.email }}</p>
 
-                <!-- Бейдж роли -->
-                <span 
-                  class="badge px-3 py-1 font-weight-bold text-uppercase"
+                <!-- Роль пользователя (чистый текст) -->
+                <div 
+                  class="font-weight-bold text-uppercase"
                   :class="{
-                    'badge-danger': currentUser.role === 'admin',
-                    'badge-info': currentUser.role === 'manager',
-                    'badge-light text-dark': currentUser.role === 'user'
+                    'text-warning': currentUser.role === 'admin',
+                    'text-info': currentUser.role === 'manager',
+                    'text-light': currentUser.role === 'user'
                   }"
-                  style="font-size: 0.75rem; letter-spacing: 0.05em;"
+                  style="font-size: 0.8rem; letter-spacing: 0.08em;"
                 >
                   {{ currentUser.role === 'admin' ? 'Администратор системы' : (currentUser.role === 'manager' ? 'Менеджер склада' : 'Покупатель магазина') }}
-                </span>
+                </div>
               </div>
 
               <!-- Блок информации о правах доступа текущей роли -->
@@ -242,21 +242,21 @@ window.ProfileView = {
                 <ul class="list-unstyled mb-4 small space-y-2">
                   <li class="d-flex align-items-center justify-content-between py-1 border-bottom">
                     <span class="text-muted">Просмотр каталога чая:</span>
-                    <span class="badge badge-success">Доступно</span>
+                    <span class="text-success font-weight-bold">Доступно</span>
                   </li>
                   <li class="d-flex align-items-center justify-content-between py-1 border-bottom">
                     <span class="text-muted">Оформление заказов:</span>
-                    <span class="badge badge-success">Доступно</span>
+                    <span class="text-success font-weight-bold">Доступно</span>
                   </li>
                   <li class="d-flex align-items-center justify-content-between py-1 border-bottom">
                     <span class="text-muted">Загрузка Excel файлов:</span>
-                    <span class="badge" :class="currentUser.role !== 'user' ? 'badge-success' : 'badge-secondary'">
+                    <span class="font-weight-bold" :class="currentUser.role !== 'user' ? 'text-success' : 'text-muted'">
                       {{ currentUser.role !== 'user' ? 'Полный доступ' : 'Базовый' }}
                     </span>
                   </li>
                   <li class="d-flex align-items-center justify-content-between py-1">
                     <span class="text-muted">Панель Voyager Админ:</span>
-                    <span class="badge" :class="currentUser.role === 'admin' ? 'badge-danger' : 'badge-secondary'">
+                    <span class="font-weight-bold" :class="currentUser.role === 'admin' ? 'text-danger' : 'text-muted'">
                       {{ currentUser.role === 'admin' ? 'Разрешено' : 'Запрещено (только admin)' }}
                     </span>
                   </li>
@@ -449,7 +449,7 @@ window.ProfileView = {
                           <td>{{ order.date }}</td>
                           <td>{{ order.items }}</td>
                           <td class="font-weight-bold">{{ order.total }}</td>
-                          <td><span class="badge badge-success">{{ order.status }}</span></td>
+                          <td><span class="text-success font-weight-bold">{{ order.status }}</span></td>
                         </tr>
                       </tbody>
                     </table>

@@ -116,7 +116,7 @@ window.FilesView = {
 
                 <tr v-else-if="files.length === 0">
                   <td colspan="7" class="text-center py-5 text-muted">
-                    <div class="badge badge-secondary p-2 mb-2 text-uppercase font-weight-bold">Хранилище пусто</div>
+                    <div class="text-muted font-weight-bold text-uppercase small mb-2 tracking-wider">Хранилище пусто</div>
                     <h5>В локальном хранилище пока нет файлов</h5>
                     <p class="small mb-3">Загрузите файл Excel на Главной странице, и он автоматически появится здесь</p>
                     <button class="btn text-white btn-sm px-4" style="background-color: var(--accent-brown);" @click="$emit('navigate', 'home')">
@@ -133,13 +133,13 @@ window.FilesView = {
                     </div>
                   </td>
                   <td>
-                    <span class="badge badge-success font-monospace">XLSX / XLS</span>
+                    <span class="text-success font-weight-bold font-monospace small">XLSX / XLS</span>
                   </td>
                   <td class="font-monospace small">
                     {{ file.sizeFormatted }}
                   </td>
                   <td>
-                    <span class="badge badge-light border font-weight-bold px-2 py-1">
+                    <span class="font-weight-bold small text-dark">
                       {{ file.rowCount }} записей
                     </span>
                   </td>

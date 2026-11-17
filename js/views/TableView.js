@@ -482,7 +482,7 @@ window.TableView = {
                     </div>
                   </td>
                   <td>
-                    <span class="badge px-2 py-1 font-weight-normal" style="background: #EFE8DC; color: var(--accent-dark); border-radius: 4px;">
+                    <span class="text-muted small font-weight-medium">
                       {{ tea.category }}
                     </span>
                   </td>
@@ -494,11 +494,11 @@ window.TableView = {
                   </td>
                   <td class="text-center">
                     <span 
-                      class="badge" 
+                      class="font-weight-bold" 
                       :class="{
-                        'badge-success': tea.stock > 10,
-                        'badge-warning': tea.stock > 0 && tea.stock <= 10,
-                        'badge-danger': tea.stock === 0
+                        'text-success': tea.stock > 10,
+                        'text-warning': tea.stock > 0 && tea.stock <= 10,
+                        'text-danger': tea.stock === 0
                       }"
                     >
                       {{ tea.stock }} шт.
@@ -537,8 +537,8 @@ window.TableView = {
           <div class="card-footer bg-light d-flex flex-wrap justify-content-between align-items-center py-3">
             <div class="text-muted small mb-2 mb-md-0 d-flex align-items-center flex-wrap">
               <span>Показано <b>{{ displayedTeas.length }}</b> из <b>{{ totalRows }}</b> сортов чая</span>
-              <span v-if="lazyMode" class="badge badge-info ml-2">Режим: Ленивая подгрузка</span>
-              <span v-else class="badge badge-secondary ml-2">Режим: Пагинация</span>
+              <span v-if="lazyMode" class="text-info font-weight-bold ml-2">Режим: Ленивая подгрузка</span>
+              <span v-else class="text-muted font-weight-bold ml-2">Режим: Пагинация</span>
 
               <!-- Деликатная ссылка восстановления демо-данных (убрана из верхнего тулбара) -->
               <button 
@@ -607,7 +607,7 @@ window.TableView = {
                 </button>
               </div>
               <div class="modal-body p-4 text-center">
-                <div class="badge badge-danger p-2 mb-3 text-uppercase font-weight-bold">Удаление записи</div>
+                <div class="text-danger font-weight-bold text-uppercase small mb-2 tracking-wider">Подтверждение удаления</div>
                 <h5>Вы уверены, что хотите удалить сорт?</h5>
                 <p class="text-danger font-weight-bold mb-1">{{ teaToDelete ? teaToDelete.title : '' }}</p>
                 <p class="text-muted small mb-0">Это действие нельзя отменить. Запись о удалении будет сохранена в журнале аудита.</p>

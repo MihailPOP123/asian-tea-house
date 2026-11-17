@@ -114,7 +114,7 @@ window.AdminView = {
     <div v-if="!isAdmin" class="container py-5" style="min-height: 75vh;">
       <div class="card border-0 shadow-sm rounded-lg p-5 text-center mx-auto my-5" style="max-width: 650px; background: #fff;">
         <div class="mb-3">
-          <span class="badge badge-danger px-3 py-1.5 font-weight-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em;">
+          <span class="text-danger font-weight-bold text-uppercase tracking-wider small">
             403 Доступ ограничен
           </span>
         </div>
@@ -139,7 +139,7 @@ window.AdminView = {
       <aside class="voyager-sidebar text-white d-flex flex-column" style="width: 260px; min-width: 260px; background-color: #222d32; border-right: 1px solid #1a2226;">
         <!-- Логотип Voyager -->
         <div class="voyager-brand p-3 d-flex align-items-center border-bottom border-dark" style="background-color: #1a2226;">
-          <span class="badge badge-warning text-dark font-weight-bold mr-2">ADM</span>
+          <span class="text-warning font-weight-bold mr-2">ADM</span>
           <div>
             <div class="font-weight-bold" style="font-size: 1.15rem; letter-spacing: 0.1em; color: #ffffff;">VOYAGER</div>
             <div class="text-muted" style="font-size: 0.65rem; text-transform: uppercase;">Административная панель</div>
@@ -154,7 +154,7 @@ window.AdminView = {
           <div class="text-truncate">
             <div class="font-weight-bold small text-white text-truncate">{{ currentUser ? currentUser.name : 'Гость' }}</div>
             <div class="text-success small d-flex align-items-center" style="font-size: 0.75rem;">
-              <span class="badge badge-success mr-1" style="font-size: 0.6rem;">Online</span>
+              <span class="text-success font-weight-bold mr-1" style="font-size: 0.7rem;">&bull; Online</span>
               <span>{{ currentUser ? currentUser.role : 'guest' }}</span>
             </div>
           </div>
@@ -242,7 +242,7 @@ window.AdminView = {
           </div>
 
           <div class="d-flex align-items-center">
-            <span class="badge badge-light border text-muted mr-3">База данных: LocalStorage Active</span>
+            <span class="text-muted small font-weight-medium mr-3">База данных: LocalStorage Active</span>
             <button class="btn btn-outline-dark btn-sm" @click="$emit('navigate', 'home')">
               Вернуться на сайт &rarr;
             </button>
@@ -313,7 +313,7 @@ window.AdminView = {
               <div class="card border-0 shadow-sm rounded-lg bg-white h-100">
                 <div class="card-header bg-white py-3 font-weight-bold d-flex justify-content-between align-items-center">
                   <span>Информация об установленном компоненте Voyager</span>
-                  <span class="badge badge-success">Статус: Активен</span>
+                  <span class="text-success font-weight-bold small">Статус: Активен</span>
                 </div>
                 <div class="card-body p-4">
                   <p class="text-muted small">
@@ -380,7 +380,7 @@ window.AdminView = {
           <div class="card border-0 shadow-sm rounded-lg bg-white">
             <div class="card-header bg-white py-3 font-weight-bold d-flex justify-content-between align-items-center">
               <span>Механизм установки ролей пользователей из административной панели</span>
-              <span class="badge badge-info">Пользователей: {{ users.length }}</span>
+              <span class="text-info font-weight-bold small">Пользователей: {{ users.length }}</span>
             </div>
             <div class="table-responsive">
               <table class="table table-hover mb-0 align-middle">
@@ -400,11 +400,11 @@ window.AdminView = {
                     <td class="text-muted">{{ user.email }}</td>
                     <td>
                       <span 
-                        class="badge px-2 py-1 font-weight-bold"
+                        class="font-weight-bold small"
                         :class="{
-                          'badge-danger': user.role === 'admin',
-                          'badge-info': user.role === 'manager',
-                          'badge-secondary': user.role === 'user'
+                          'text-danger': user.role === 'admin',
+                          'text-info': user.role === 'manager',
+                          'text-muted': user.role === 'user'
                         }"
                       >
                         {{ user.role.toUpperCase() }}

@@ -81,9 +81,9 @@ window.AdSlot = {
       role="complementary"
       :aria-label="label"
     >
-      <!-- Маркировка рекламного блока по требованиям ФЗ / IAB -->
-      <div class="absolute top-2 right-2.5 flex items-center gap-1.5">
-        <span class="text-[10px] uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500 bg-white/80 dark:bg-slate-800/80 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
+      <!-- Маркировка рекламного блока по требованиям ФЗ / IAB (чистый текст) -->
+      <div class="absolute top-2.5 right-3 flex items-center">
+        <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
           {{ badgeText }}
         </span>
       </div>

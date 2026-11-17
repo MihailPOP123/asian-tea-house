@@ -333,10 +333,11 @@ window.AnalyticsDashboard = {
                 <td class="py-3 px-3 font-bold text-slate-900 dark:text-white">{{ t.sum }}</td>
                 <td class="py-3 px-3 text-right">
                   <span 
+                    class="font-bold text-xs"
                     :class="{
-                      'badge-tw-success': t.statusType === 'success',
-                      'badge-tw-info': t.statusType === 'info',
-                      'badge-tw-warning': t.statusType === 'warning'
+                      'text-emerald-600 dark:text-emerald-400': t.statusType === 'success',
+                      'text-indigo-600 dark:text-indigo-400': t.statusType === 'info',
+                      'text-amber-600 dark:text-amber-400': t.statusType === 'warning'
                     }"
                   >
                     {{ t.status }}

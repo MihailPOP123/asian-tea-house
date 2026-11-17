@@ -81,16 +81,16 @@ window.LogsView = {
       }
     },
 
-    getActionBadgeClass(action) {
+    getActionTextClass(action) {
       switch (action) {
-        case 'CREATE': return 'badge-success';
-        case 'UPDATE': return 'badge-warning text-dark';
-        case 'DELETE': return 'badge-danger';
-        case 'EXCEL_IMPORT': return 'badge-primary';
-        case 'LOGIN': return 'badge-info';
-        case 'LOGOUT': return 'badge-secondary';
-        case 'REGISTER': return 'badge-success';
-        default: return 'badge-dark';
+        case 'CREATE': return 'text-success';
+        case 'UPDATE': return 'text-warning';
+        case 'DELETE': return 'text-danger';
+        case 'EXCEL_IMPORT': return 'text-primary';
+        case 'LOGIN': return 'text-info';
+        case 'LOGOUT': return 'text-muted';
+        case 'REGISTER': return 'text-success';
+        default: return 'text-dark';
       }
     }
   },
@@ -191,13 +191,13 @@ window.LogsView = {
                     <div class="text-muted small">{{ log.user }}</div>
                   </td>
                   <td>
-                    <span class="badge py-1 px-2" :class="getActionBadgeClass(log.action)">
+                    <span class="font-weight-bold small" :class="getActionTextClass(log.action)">
                       {{ log.actionName || log.action }}
                     </span>
                   </td>
                   <td>
                     <span class="font-weight-bold text-dark">{{ log.entityTitle || '—' }}</span>
-                    <span class="badge badge-light border text-muted ml-1">{{ log.entity }}</span>
+                    <span class="text-muted small ml-1">({{ log.entity }})</span>
                   </td>
                   <td class="small text-secondary" style="max-width: 280px;">
                     {{ log.details }}

@@ -6,17 +6,20 @@
 
 @layer components {
   /* ==========================================================================
-     1. ТИПОГРАФИКА ДИЗАЙН-СИСТЕМЫ (Задание 4.4, 3.3)
+     1. ТИПОГРАФИКА ДИЗАЙН-СИСТЕМЫ (Задание 4.4, 3.3) — В стиле Asian Tea House
      ========================================================================== */
   .heading-1 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight;
+    font-family: var(--font-serif);
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight;
   }
 
   .heading-2 {
+    font-family: var(--font-serif);
     @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-800 dark:text-slate-100;
   }
 
   .heading-3 {
+    font-family: var(--font-serif);
     @apply text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100;
   }
 
@@ -50,10 +53,11 @@
     @apply btn-tw px-6 py-3 text-base rounded-xl gap-2.5 shadow-sm;
   }
 
-  /* Варианты стилей */
+  /* Варианты стилей (В фирменных цветах Asian Tea House) */
   .btn-tw-primary {
-    @apply bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 
-           focus-visible:ring-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-600;
+    background-color: var(--accent-brown);
+    @apply text-white hover:opacity-90 active:scale-95 
+           focus-visible:ring-2 focus-visible:ring-amber-500 shadow-sm;
   }
 
   .btn-tw-secondary {
@@ -139,11 +143,11 @@
   }
 
   .card-tw {
-    @apply bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 rounded-2xl shadow-sm transition-all;
+    @apply bg-white dark:bg-[#1E2823] border border-[#E5E0D8] dark:border-[#2C3B34] rounded-2xl shadow-sm transition-all;
   }
 
   .card-tw-hover {
-    @apply card-tw hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600;
+    @apply card-tw hover:shadow-md hover:border-[#D6CEBF] dark:hover:border-[#3D5248];
   }
 
   /* ==========================================================================

@@ -39,15 +39,13 @@ window.SidebarDashboard = {
       <div 
         v-if="mobileSidebarOpen" 
         @click="mobileSidebarOpen = false"
-        class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden transition-opacity"
+        class="absolute inset-0 z-30 bg-slate-900/50 backdrop-blur-sm lg:hidden transition-opacity"
       ></div>
 
-      <!-- 1. Сайдбар фиксированной ширины 256px (w-64) -->
-      <!-- В соответствии с требованиями: fixed inset-y-0 left-0 w-64, translate-x-*, h-screen, overflow-y-auto -->
-      <!-- (Используем z-50 и абсолют/фикс позиционирование внутри контейнера задания) -->
+      <!-- 1. Сайдбар фиксированной ширины 256px (w-64) в контейнере дашборда -->
       <aside 
         :class="mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-        class="absolute lg:fixed top-0 bottom-0 left-0 w-64 z-50 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700/80 transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto"
+        class="absolute inset-y-0 left-0 w-64 z-40 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700/80 transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto"
       >
         <div>
           <!-- Логотип в шапке сайдбара -->
@@ -143,9 +141,9 @@ window.SidebarDashboard = {
             </div>
           </div>
 
-          <!-- Правая часть topbar: уведомления и аватар -->
+          <!-- Правая часть topbar: статус и аватар (чистый текст без плашки) -->
           <div class="flex items-center gap-3">
-            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hidden sm:inline-flex">
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hidden sm:inline-flex">
               Склад: В норме
             </span>
             <div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-xs text-slate-700 dark:text-slate-200">

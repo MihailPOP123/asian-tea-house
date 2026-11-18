@@ -112,21 +112,19 @@ window.ProductGrid = {
               class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               @error="onImgError($event, item.fallbackImage)"
             />
-            
-            <!-- Бейдж категории -->
-            <span class="absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 backdrop-blur-sm shadow-sm">
-              {{ item.category }}
-            </span>
-
-            <!-- Оценка (без эмодзи) -->
-            <span class="absolute top-3 right-3 px-2 py-0.5 text-xs font-bold rounded-md bg-amber-500/90 text-white backdrop-blur-sm">
-              Рейтинг {{ item.rating }}
-            </span>
           </div>
 
           <!-- Текстовый контент карточки -->
           <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
             <div>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                  {{ item.category }}
+                </span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Рейтинг {{ item.rating }}
+                </span>
+              </div>
               <p class="text-xs text-slate-400 font-medium">{{ item.weight }}</p>
               <h4 class="text-base font-bold text-slate-900 dark:text-white line-clamp-2 mt-0.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 {{ item.name }}

@@ -105,7 +105,7 @@ window.MessengerChat = {
         <!-- Шапка списка диалогов -->
         <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
           <h3 class="font-bold text-slate-900 dark:text-white text-base">Сообщения</h3>
-          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
             3 диалога
           </span>
         </div>
@@ -181,7 +181,7 @@ window.MessengerChat = {
           </div>
 
           <div class="flex items-center gap-2">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+            <span class="text-xs font-bold text-slate-500 dark:text-slate-400">
               Чат поддержки
             </span>
           </div>

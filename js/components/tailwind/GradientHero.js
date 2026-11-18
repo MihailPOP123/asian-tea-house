@@ -38,8 +38,8 @@ window.GradientHero = {
       <!-- 3. Центральный контент с плавной анимацией появления -->
       <div class="relative z-10 max-w-3xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in">
         
-        <!-- Верхний бейдж с эффектом glassmorphism -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/90 border border-white/20 backdrop-blur-md text-xs sm:text-sm font-medium shadow-inner">
+        <!-- Верхняя текстовая плашка (чистая типографика) -->
+        <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-300 tracking-wider uppercase">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>Новый сезонный сбор 2026 уже в каталоге</span>
         </div>

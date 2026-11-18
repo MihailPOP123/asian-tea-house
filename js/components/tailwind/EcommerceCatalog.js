@@ -251,12 +251,12 @@ window.EcommerceCatalog = {
                       class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                       @error="onImgError($event, product.fallback)"
                     />
-                    <span class="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 backdrop-blur-sm">
-                      {{ product.category }}
-                    </span>
                   </div>
 
-                  <p class="text-[11px] text-slate-400 font-medium">{{ product.weight }}</p>
+                  <div class="flex items-center justify-between text-[11px] mb-1">
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">{{ product.category }}</span>
+                    <span class="text-slate-400 font-medium">{{ product.weight }}</span>
+                  </div>
                   <h4 class="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 mt-0.5 min-h-[40px]">
                     {{ product.name }}
                   </h4>

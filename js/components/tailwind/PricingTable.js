@@ -106,7 +106,7 @@ window.PricingTable = {
             class="px-4 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5"
           >
             <span>На год</span>
-            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+            <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
               Скидка 20%
             </span>
           </button>

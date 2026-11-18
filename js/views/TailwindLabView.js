@@ -70,9 +70,9 @@ window.TailwindLabView = {
         
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold mb-2">
+            <div class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-2 tracking-wide uppercase">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Tailwind CSS v3.4+ • Mobile-First • No Emojis</span>
+              <span>Tailwind CSS v3.4+ &middot; Mobile-First &middot; No Emojis</span>
             </div>
             <h1 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
               Лаборатория вёрстки: Все 4 уровня
@@ -218,7 +218,7 @@ window.TailwindLabView = {
               <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Уровень 1</span>
               <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Базовые компоненты</h2>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
               3 задания
             </span>
           </div>
@@ -268,7 +268,7 @@ window.TailwindLabView = {
               <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Уровень 2</span>
               <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Средний уровень</h2>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 font-bold">
+            <span class="text-xs font-bold text-purple-600 dark:text-purple-400">
               4 задания
             </span>
           </div>
@@ -325,7 +325,7 @@ window.TailwindLabView = {
               <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Уровень 3</span>
               <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Продвинутый уровень</h2>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">
               4 задания
             </span>
           </div>
@@ -386,7 +386,7 @@ window.TailwindLabView = {
               <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Уровень 4</span>
               <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Экспертный уровень (Tailwind 3.4+)</h2>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-bold">
+            <span class="text-xs font-bold text-rose-600 dark:text-rose-400">
               4 задания
             </span>
           </div>
@@ -431,8 +431,8 @@ window.TailwindLabView = {
               <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Задание 4.4</span>
               <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Дизайн-система и Storybook</h2>
             </div>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">
-              @layer components & @apply
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              @layer components &amp; @apply
             </span>
           </div>
 

@@ -11,9 +11,6 @@
 
 window.ProfileView = {
   name: 'ProfileView',
-  components: {
-    'profile-card': window.ProfileCard
-  },
   props: {
     currentUser: {
       type: Object,
@@ -311,14 +308,20 @@ window.ProfileView = {
 
             </div>
 
-            <!-- Карточка чайного мастера-куратора (Tailwind ProfileCard Integration) -->
-            <div class="mt-4">
-              <div class="text-muted small font-weight-bold text-uppercase mb-2 text-center" style="letter-spacing: 0.05em;">
-                Ваш персональный куратор
-              </div>
-              <div class="d-flex justify-content-center">
-                <profile-card></profile-card>
-              </div>
+            <!-- Кнопка выхода из профиля (Требование 3: кнопка выхода в самом профиле) -->
+            <div class="mt-3">
+              <button 
+                type="button" 
+                @click="$emit('logout')" 
+                class="btn btn-outline-danger btn-block py-2.5 font-weight-bold shadow-sm d-flex align-items-center justify-content-center"
+                style="border-radius: var(--radius-sm);"
+                title="Завершить сессию и выйти"
+              >
+                <svg class="mr-2" style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                </svg>
+                <span>Выйти из учетной записи</span>
+              </button>
             </div>
           </div>
 
@@ -473,14 +476,20 @@ window.ProfileView = {
 
             </div>
 
-            <!-- Карточка чайного мастера-куратора (Tailwind ProfileCard Integration) -->
-            <div class="mt-4">
-              <div class="text-muted small font-weight-bold text-uppercase mb-2 text-center" style="letter-spacing: 0.05em;">
-                Ваш персональный куратор
-              </div>
-              <div class="d-flex justify-content-center">
-                <profile-card></profile-card>
-              </div>
+            <!-- Кнопка выхода из профиля (Требование 3: кнопка выхода в самом профиле) -->
+            <div class="mt-3">
+              <button 
+                type="button" 
+                @click="$emit('logout')" 
+                class="btn btn-outline-danger btn-block py-2.5 font-weight-bold shadow-sm d-flex align-items-center justify-content-center"
+                style="border-radius: var(--radius-sm);"
+                title="Завершить сессию и выйти"
+              >
+                <svg class="mr-2" style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                </svg>
+                <span>Выйти из учетной записи</span>
+              </button>
             </div>
           </div>
 

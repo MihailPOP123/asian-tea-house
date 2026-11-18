@@ -60,7 +60,6 @@ const app = createApp({
     'analytics-view': window.AnalyticsView,
     'chat-view': window.ChatView,
     'ceremony-view': window.CeremonyView,
-    'floating-chat-widget': window.FloatingChatWidget,
     'tailwind-lab-view': window.TailwindLabView,
     'profile-card': window.ProfileCard,
     'tailwind-navbar': window.TailwindNavbar,

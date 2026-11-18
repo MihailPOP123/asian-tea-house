@@ -5,9 +5,7 @@
 window.HomeView = {
   name: 'HomeView',
   components: {
-    'pricing-table': window.PricingTable,
-    'multi-step-form': window.MultiStepForm,
-    'profile-card': window.ProfileCard
+    'pricing-table': window.PricingTable
   },
   props: {
     teas: {
@@ -47,35 +45,14 @@ window.HomeView = {
               Насладитесь балансом чистоты, свежести и древней чайной философии.
             </p>
 
-            <!-- Основной и вторичные CTA с четким визуальным весом -->
-            <div class="d-flex flex-wrap align-items-center gap-2">
+            <!-- Основной CTA витрины -->
+            <div class="d-flex align-items-center">
               <button 
                 @click="$emit('navigate', 'table')" 
-                class="btn text-white px-4 py-3 mr-2 mb-2 font-weight-bold shadow-sm" 
+                class="btn text-white px-5 py-3 font-weight-bold shadow-sm" 
                 style="background-color: var(--accent-brown); letter-spacing: 0.05em; border-radius: var(--radius-sm);"
               >
-                ОТКРЫТЬ КАТАЛОГ &rarr;
-              </button>
-              <button 
-                @click="$emit('navigate', 'ceremony')" 
-                class="btn btn-outline-dark px-4 py-3 mr-2 mb-2 font-weight-bold" 
-                style="letter-spacing: 0.05em; border-radius: var(--radius-sm);"
-              >
-                ПОДБОР ЦЕРЕМОНИИ &rarr;
-              </button>
-              <button 
-                @click="$emit('navigate', 'chat')" 
-                class="btn btn-dark text-white px-4 py-3 mr-2 mb-2 font-weight-bold shadow-sm" 
-                style="background-color: var(--accent-dark); letter-spacing: 0.05em; border-radius: var(--radius-sm);"
-              >
-                ЧАТ С СОМЕЛЬЕ &rarr;
-              </button>
-              <button 
-                @click="$emit('navigate', 'analytics')" 
-                class="btn btn-outline-secondary px-3 py-3 mb-2 font-weight-bold" 
-                style="letter-spacing: 0.05em; border-radius: var(--radius-sm);"
-              >
-                АНАЛИТИКА &rarr;
+                ОТКРЫТЬ КАТАЛОГ ЧАЯ &rarr;
               </button>
             </div>
           </div>
@@ -154,51 +131,6 @@ window.HomeView = {
       <section class="py-5" id="club" style="background-color: var(--bg-color); border-top: 1px solid #E5E0D8; border-bottom: 1px solid #E5E0D8;">
         <div class="container">
           <pricing-table></pricing-table>
-        </div>
-      </section>
-
-      <!-- 4.2. Индивидуальный подбор чайной церемонии (Интеграция Tailwind MultiStepForm) -->
-      <section class="py-5" id="ceremony" style="background-color: #FAF7F2; border-bottom: 1px solid #E5E0D8;">
-        <div class="container">
-          <div class="text-center max-w-2xl mx-auto mb-4">
-            <span class="text-uppercase font-weight-bold text-muted small" style="letter-spacing: 0.12em; font-size: 0.75rem;">Индивидуальный заказ</span>
-            <h2 class="section-title mb-2">Подбор и заказ чайной церемонии</h2>
-            <p class="text-muted small">Интерактивный мастер: контакты, доставка, выбор ритуала и подтверждение</p>
-          </div>
-          <div class="d-flex justify-content-center">
-            <div class="w-100" style="max-width: 820px;">
-              <multi-step-form></multi-step-form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4.3. Наши чайные мастера (Интеграция Tailwind ProfileCard) -->
-      <section class="py-5" id="masters" style="background-color: var(--bg-color); border-bottom: 1px solid #E5E0D8;">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-              <span class="text-uppercase font-weight-bold text-muted small" style="letter-spacing: 0.12em; font-size: 0.75rem;">Хранители традиций</span>
-              <h2 class="section-title text-left mb-3">Мастера чайного дома</h2>
-              <p class="text-muted mb-3" style="line-height: 1.7;">
-                В Asian Tea House каждую партию чая лично оценивают дипломированные титестеры. Наш ведущий мастер Чэнь Юнь ежегодно проводит месяцы в чайных садах Уишань и Юньнань, отбирая сырьё с древних чайных деревьев.
-              </p>
-              <p class="text-muted mb-4" style="line-height: 1.7;">
-                Вы можете задать любой вопрос о проливах, гайванях и выдержке пуэров прямо в онлайн-чате с сомелье.
-              </p>
-              <div class="d-flex flex-wrap gap-2">
-                <button @click="$emit('navigate', 'chat')" class="btn btn-dark font-weight-bold px-4 py-2.5 mr-2 mb-2" style="border-radius: var(--radius-sm); background-color: var(--accent-dark);">
-                  Написать мастеру в чат &rarr;
-                </button>
-                <button @click="$emit('navigate', 'analytics')" class="btn btn-outline-dark font-weight-bold px-4 py-2.5 mb-2" style="border-radius: var(--radius-sm);">
-                  Поставки и аналитика
-                </button>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex justify-content-center">
-              <profile-card></profile-card>
-            </div>
-          </div>
         </div>
       </section>
 

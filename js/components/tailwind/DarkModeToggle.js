@@ -1,13 +1,7 @@
 /**
- * DarkModeToggle.js — Задание 3.4: Dark mode с переключателем
- * Требования:
- * - Переключатель light / dark
- * - Все секции адаптированы под обе темы
- * - Использовать dark: префикс
- * - Кнопка-переключатель с иконкой солнца / луны (SVG вектор, без эмодзи)
- * - Требования: darkMode: 'class' в конфиге, dark:bg-slate-900, dark:text-slate-100, плавные transition-colors
+ * DarkModeToggle.js — Классический переключатель темы (Солнце / Луна)
+ * Senior UX: лаконичная круглая кнопка с иконками солнца и луны без лишнего текста
  */
-
 window.DarkModeToggle = {
   name: 'DarkModeToggle',
   props: {
@@ -23,44 +17,34 @@ window.DarkModeToggle = {
     }
   },
   template: `
-    <div class="inline-flex items-center gap-3 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors">
-      <button 
-        type="button" 
-        @click="toggle"
-        :aria-label="isDark ? 'Переключить на светлую тему' : 'Переключить на темную тему'"
-        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 select-none"
-        :class="isDark 
-          ? 'bg-slate-900 text-amber-300 shadow-sm border border-slate-700' 
-          : 'bg-white text-slate-800 shadow-sm border border-slate-200'"
+    <button 
+      type="button" 
+      @click="toggle"
+      :title="isDark ? 'Включить светлую тему' : 'Включить темную тему'"
+      :aria-label="isDark ? 'Включить светлую тему' : 'Включить темную тему'"
+      class="theme-toggle-btn d-inline-flex align-items-center justify-content-center rounded-circle border shadow-sm transition-all"
+      :class="isDark 
+        ? 'bg-dark text-warning border-secondary' 
+        : 'bg-white text-secondary border-light'"
+      style="width: 38px; height: 38px; min-width: 38px; cursor: pointer; transition: all 0.2s ease;"
+    >
+      <!-- Классическая Луна для светлой темы (нажатие переключает на темную) -->
+      <svg 
+        v-if="!isDark" 
+        style="width: 18px; height: 18px; fill: #4B5563;" 
+        viewBox="0 0 20 20"
       >
-        <!-- SVG Иконка Солнца (для светлой темы) -->
-        <svg 
-          v-if="!isDark" 
-          class="w-4 h-4 text-amber-500" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+      </svg>
 
-        <!-- SVG Иконка Луны (для темной темы) -->
-        <svg 
-          v-else 
-          class="w-4 h-4 text-amber-300" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-
-        <span>{{ isDark ? 'Темная тема' : 'Светлая тема' }}</span>
-      </button>
-
-      <span class="text-[11px] text-slate-400 font-medium pr-2 hidden sm:inline">
-        Класс .dark
-      </span>
-    </div>
+      <!-- Классическое Солнце для темной темы (нажатие переключает на светлую) -->
+      <svg 
+        v-else 
+        style="width: 20px; height: 20px; fill: #FBBF24;" 
+        viewBox="0 0 20 20"
+      >
+        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
   `
 };

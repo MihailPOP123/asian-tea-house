@@ -222,25 +222,25 @@ window.AppHeader = {
         <!-- 3. Пользовательский блок справа с переключателем темы и профилем -->
         <div class="user-action-block d-flex align-items-center">
           
-          <!-- Переключатель темной / светлой темы (Tailwind DarkModeToggle) -->
-          <div class="mr-2 d-none d-sm-block">
+          <!-- Классический переключатель темы (Солнце / Луна) -->
+          <div class="mr-3">
             <dark-mode-toggle :is-dark="isDark" @toggle-dark="$emit('toggle-dark')"></dark-mode-toggle>
           </div>
           
-          <!-- Авторизованный пользователь -->
+          <!-- Авторизованный пользователь (клик открывает профиль, без лишних кнопок в шапке) -->
           <div v-if="currentUser" class="d-flex align-items-center">
             
             <!-- Кликабельная карточка профиля в шапке -->
             <div 
-              class="d-flex align-items-center mr-3 p-1 rounded cursor-pointer profile-nav-badge"
+              class="d-flex align-items-center p-1 rounded cursor-pointer profile-nav-badge"
               @click="setRoute('profile')"
-              title="Открыть мой профиль"
+              title="Открыть личный кабинет"
               style="cursor: pointer;"
             >
               <!-- Круглый мини-аватар -->
               <div 
                 class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center font-weight-bold mr-2 shadow-sm"
-                style="width: 32px; height: 32px; font-size: 0.85rem;"
+                style="width: 34px; height: 34px; font-size: 0.9rem;"
               >
                 {{ currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U' }}
               </div>
@@ -261,27 +261,6 @@ window.AppHeader = {
                 </span>
               </div>
             </div>
-
-            <!-- Кнопка «Профиль» -->
-            <button 
-              type="button"
-              class="btn btn-sm btn-outline-success font-weight-bold mr-2 px-2.5"
-              :class="{ 'active': currentView === 'profile' }"
-              @click="setRoute('profile')"
-              title="Перейти в личный кабинет"
-            >
-              Профиль
-            </button>
-
-            <!-- Кнопка «Выйти» -->
-            <button 
-              type="button"
-              class="btn btn-sm btn-outline-secondary px-2.5" 
-              @click="$emit('logout')" 
-              title="Выйти из учетной записи"
-            >
-              Выход
-            </button>
 
           </div>
 
@@ -356,7 +335,8 @@ window.AppHeader = {
               Войти в систему
             </a>
           </li>
-          <li class="nav-item py-2 border-top mt-2">
+          <li class="nav-item py-2 border-top mt-2 d-flex align-items-center justify-content-between text-muted small">
+            <span>Тема оформления (светлая / темная):</span>
             <dark-mode-toggle :is-dark="isDark" @toggle-dark="$emit('toggle-dark')"></dark-mode-toggle>
           </li>
         </ul>

@@ -486,3 +486,217 @@ img {
   box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08) !important;
 }
 
+/* ==========================================================================
+   ПОЛНОЦЕННАЯ ТЕМНАЯ ТЕМА (DARK MODE) ДЛЯ ВСЕХ СТРАНИЦ САЙТА
+   ========================================================================== */
+html.dark {
+  --bg-color: #121816;
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --accent-brown: #D98863;
+  --accent-dark: #F8FAFC;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #121816 !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark .header,
+html.dark header.header {
+  background-color: #18221F !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .header .logo,
+html.dark .header a.text-dark,
+html.dark .header .text-dark,
+html.dark .nav-link.text-dark {
+  color: #F1F5F9 !important;
+}
+
+html.dark .bg-white {
+  background-color: #18221F !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark .text-dark,
+html.dark .section-title,
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+  color: #F8FAFC !important;
+}
+
+html.dark .text-muted {
+  color: #94A3B8 !important;
+}
+
+html.dark .border,
+html.dark .border-bottom,
+html.dark .border-top,
+html.dark .border-left,
+html.dark .border-right,
+html.dark .dropdown-menu {
+  border-color: #2D3D38 !important;
+}
+
+html.dark .dropdown-menu {
+  background-color: #18221F !important;
+}
+
+html.dark .dropdown-item {
+  color: #F1F5F9 !important;
+}
+
+html.dark .dropdown-item:hover,
+html.dark .dropdown-item:focus {
+  background-color: #24332E !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .card {
+  background-color: #18221F !important;
+  border-color: #2D3D38 !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark .card-header {
+  background-color: #1C2723 !important;
+  border-color: #2D3D38 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .table {
+  color: #F1F5F9 !important;
+}
+
+html.dark .table thead.thead-dark th {
+  background-color: #16201D !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .table td,
+html.dark .table th {
+  border-color: #2D3D38 !important;
+}
+
+html.dark .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+html.dark .table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .form-control,
+html.dark .custom-select,
+html.dark input,
+html.dark select {
+  background-color: #16201D !important;
+  border-color: #2D3D38 !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark .form-control:focus,
+html.dark .custom-select:focus {
+  background-color: #1A2622 !important;
+  border-color: var(--accent-brown) !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .input-group-text {
+  background-color: #1E2B27 !important;
+  border-color: #2D3D38 !important;
+  color: #94A3B8 !important;
+}
+
+html.dark .btn-outline-dark {
+  color: #F1F5F9 !important;
+  border-color: #4B5563 !important;
+}
+
+html.dark .btn-outline-dark:hover {
+  background-color: #2D3D38 !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .btn-outline-secondary {
+  color: #CBD5E1 !important;
+  border-color: #475569 !important;
+}
+
+html.dark .modal-content {
+  background-color: #18221F !important;
+  color: #F1F5F9 !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .modal-header,
+html.dark .modal-footer {
+  border-color: #2D3D38 !important;
+}
+
+html.dark .close {
+  color: #F1F5F9 !important;
+}
+
+html.dark .subscribe {
+  background-color: #141C1A !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .subscribe__input {
+  background-color: #18221F !important;
+  color: #F1F5F9 !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .advantages,
+html.dark .testimonial,
+html.dark .chat-view,
+html.dark .ceremony-view,
+html.dark .analytics-view {
+  background-color: #121816 !important;
+}
+
+html.dark section[style*="--bg-color"],
+html.dark div[style*="--bg-color"] {
+  background-color: #121816 !important;
+}
+
+html.dark section[style*="#FAF7F2"],
+html.dark div[style*="#FAF7F2"],
+html.dark section[style*="#f9f9f9"],
+html.dark div[style*="#f9f9f9"],
+html.dark div[style*="#F8F9FA"] {
+  background-color: #16201D !important;
+}
+
+html.dark .advantage-card {
+  background-color: #18221F !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .advantage-card__title {
+  color: #F8FAFC !important;
+}
+
+html.dark .advantage-card__desc {
+  color: #94A3B8 !important;
+}
+
+html.dark .testimonial__quote {
+  color: #E2E8F0 !important;
+}
+
+html.dark details.bg-white {
+  background-color: #18221F !important;
+  border-color: #2D3D38 !important;
+}
+
+html.dark .theme-toggle-btn {
+  background-color: #24332E !important;
+  border-color: #374151 !important;
+}
+
+

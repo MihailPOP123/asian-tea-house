@@ -60,7 +60,6 @@ const app = createApp({
     'analytics-view': window.AnalyticsView,
     'chat-view': window.ChatView,
     'ceremony-view': window.CeremonyView,
-    'tailwind-lab-view': window.TailwindLabView,
     'profile-card': window.ProfileCard,
     'tailwind-navbar': window.TailwindNavbar,
     'product-grid': window.ProductGrid,
@@ -144,11 +143,6 @@ const app = createApp({
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
         }
-        if (hash === 'tailwind' || hash === 'tailwind-lab' || hash.startsWith('tw-')) {
-          this.currentView = 'tailwind';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
         if (hash === 'analytics' || hash === 'charts' || hash === 'sales-dashboard') {
           this.currentView = 'analytics';
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -176,7 +170,7 @@ const app = createApp({
           return;
         }
 
-        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'tailwind', 'profile', 'analytics', 'chat', 'ceremony'];
+        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'profile', 'analytics', 'chat', 'ceremony'];
         if (validViews.includes(hash)) {
           this.currentView = hash;
         }
@@ -256,7 +250,6 @@ if (window.LogsView) app.component('logs-view', window.LogsView);
 if (window.FilesView) app.component('files-view', window.FilesView);
 if (window.AdminView) app.component('admin-view', window.AdminView);
 if (window.ProfileView) app.component('profile-view', window.ProfileView);
-if (window.TailwindLabView) app.component('tailwind-lab-view', window.TailwindLabView);
 if (window.ProfileCard) app.component('profile-card', window.ProfileCard);
 if (window.TailwindNavbar) app.component('tailwind-navbar', window.TailwindNavbar);
 if (window.ProductGrid) app.component('product-grid', window.ProductGrid);

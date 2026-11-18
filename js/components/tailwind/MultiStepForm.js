@@ -266,7 +266,7 @@ window.MultiStepForm = {
                   <input type="radio" name="delivery" value="courier" v-model="formData.deliveryType" class="text-emerald-600 focus:ring-emerald-500" />
                 </div>
                 <div class="mt-2">
-                  <span class="block text-sm font-extrabold text-slate-900 dark:text-white">350 ₽</span>
+                  <span class="block text-sm font-extrabold text-slate-900 dark:text-white">12 BYN</span>
                   <span class="text-[11px] text-slate-400">1-2 дня</span>
                 </div>
               </label>
@@ -278,7 +278,7 @@ window.MultiStepForm = {
                   <input type="radio" name="delivery" value="express" v-model="formData.deliveryType" class="text-emerald-600 focus:ring-emerald-500" />
                 </div>
                 <div class="mt-2">
-                  <span class="block text-sm font-extrabold text-slate-900 dark:text-white">700 ₽</span>
+                  <span class="block text-sm font-extrabold text-slate-900 dark:text-white">25 BYN</span>
                   <span class="text-[11px] text-slate-400">Сегодня за 3 часа</span>
                 </div>
               </label>
@@ -394,7 +394,7 @@ window.MultiStepForm = {
             </div>
             <div class="flex justify-between pt-2 text-base font-extrabold text-slate-900 dark:text-white">
               <span>Итого к оплате:</span>
-              <span>4 500 ₽</span>
+              <span>125 BYN</span>
             </div>
           </div>
         </fieldset>

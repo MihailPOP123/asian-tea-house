@@ -18,7 +18,7 @@ window.EcommerceCatalog = {
       mobileFilterDrawerOpen: false,
       isLoading: false,
       selectedCategory: 'all',
-      maxPrice: 3500,
+      maxPrice: 120,
       selectedTag: 'all',
       sortBy: 'price-asc',
       currentPage: 1,
@@ -40,14 +40,14 @@ window.EcommerceCatalog = {
       ],
 
       rawProducts: [
-        { id: 1, name: 'Да Хун Пао (Большой Красный Халат)', category: 'Улун', tag: 'exclusive', price: 1850, rating: 4.9, weight: '100 г', image: 'images/collection-1.jpg', fallback: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80' },
-        { id: 2, name: 'Те Гуань Инь Ван (Железная Бодхисаттва)', category: 'Улун', tag: 'organic', price: 1420, rating: 4.8, weight: '100 г', image: 'images/collection-2.jpg', fallback: 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=500&q=80' },
-        { id: 3, name: 'Шу Пуэр Мэнхай 2012 (Императорский)', category: 'Пуэр', tag: 'vintage', price: 2650, rating: 5.0, weight: '357 г блин', image: 'images/hero-bg.jpg', fallback: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80' },
-        { id: 4, name: 'Бай Хао Инь Чжэнь (Серебряные Иглы)', category: 'Белый чай', tag: 'exclusive', price: 2950, rating: 4.9, weight: '50 г', image: 'images/tea-leaves.jpg', fallback: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=500&q=80' },
-        { id: 5, name: 'Лунцзин Сиху (Колодец Дракона)', category: 'Зеленый чай', tag: 'organic', price: 2100, rating: 4.9, weight: '50 г', image: 'images/collection-3.jpg', fallback: 'https://images.unsplash.com/photo-1563911892437-1feda0179e1b?auto=format&fit=crop&w=500&q=80' },
-        { id: 6, name: 'Моли Чжэнь Чжу (Жасминовый Жемчуг)', category: 'Зеленый чай', tag: 'organic', price: 1290, rating: 4.7, weight: '100 г', image: 'images/tea-prep.jpg', fallback: 'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=500&q=80' },
-        { id: 7, name: 'Шэн Пуэр Юньнань 2018 (Древние деревья)', category: 'Пуэр', tag: 'vintage', price: 3200, rating: 4.9, weight: '357 г блин', image: 'images/hero-bg.jpg', fallback: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80' },
-        { id: 8, name: 'Дун Дин Улун (Морозный Пик Тайвань)', category: 'Улун', tag: 'exclusive', price: 1980, rating: 4.8, weight: '75 г', image: 'images/collection-1.jpg', fallback: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80' }
+        { id: 1, name: 'Да Хун Пао (Большой Красный Халат)', category: 'Улун', tag: 'exclusive', price: 48, rating: 4.9, weight: '100 г', image: 'images/collection-1.jpg', fallback: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80' },
+        { id: 2, name: 'Те Гуань Инь Ван (Железная Бодхисаттва)', category: 'Улун', tag: 'organic', price: 36, rating: 4.8, weight: '100 г', image: 'images/collection-2.jpg', fallback: 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=500&q=80' },
+        { id: 3, name: 'Шу Пуэр Мэнхай 2012 (Императорский)', category: 'Пуэр', tag: 'vintage', price: 72, rating: 5.0, weight: '357 г блин', image: 'images/hero-bg.jpg', fallback: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80' },
+        { id: 4, name: 'Бай Хао Инь Чжэнь (Серебряные Иглы)', category: 'Белый чай', tag: 'exclusive', price: 85, rating: 4.9, weight: '50 г', image: 'images/tea-leaves.jpg', fallback: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=500&q=80' },
+        { id: 5, name: 'Лунцзин Сиху (Колодец Дракона)', category: 'Зеленый чай', tag: 'organic', price: 55, rating: 4.9, weight: '50 г', image: 'images/collection-3.jpg', fallback: 'https://images.unsplash.com/photo-1563911892437-1feda0179e1b?auto=format&fit=crop&w=500&q=80' },
+        { id: 6, name: 'Моли Чжэнь Чжу (Жасминовый Жемчуг)', category: 'Зеленый чай', tag: 'organic', price: 32, rating: 4.7, weight: '100 г', image: 'images/tea-prep.jpg', fallback: 'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=500&q=80' },
+        { id: 7, name: 'Шэн Пуэр Юньнань 2018 (Древние деревья)', category: 'Пуэр', tag: 'vintage', price: 95, rating: 4.9, weight: '357 г блин', image: 'images/hero-bg.jpg', fallback: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80' },
+        { id: 8, name: 'Дун Дин Улун (Морозный Пик Тайвань)', category: 'Улун', tag: 'exclusive', price: 58, rating: 4.8, weight: '75 г', image: 'images/collection-1.jpg', fallback: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80' }
       ]
     };
   },
@@ -98,7 +98,7 @@ window.EcommerceCatalog = {
     resetFilters() {
       this.selectedCategory = 'all';
       this.selectedTag = 'all';
-      this.maxPrice = 3500;
+      this.maxPrice = 120;
       this.currentPage = 1;
       this.mobileFilterDrawerOpen = false;
       this.triggerLoading();
@@ -183,20 +183,20 @@ window.EcommerceCatalog = {
           <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-700">
             <div class="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
               <span>Макс. цена:</span>
-              <span class="text-emerald-600 font-extrabold">{{ maxPrice }} ₽</span>
+              <span class="text-emerald-600 font-extrabold">{{ maxPrice }} BYN</span>
             </div>
             <input 
               type="range" 
-              min="1000" 
-              max="3500" 
-              step="100"
+              min="20" 
+              max="120" 
+              step="5"
               v-model.number="maxPrice"
               @change="triggerLoading"
               class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
             />
             <div class="flex justify-between text-[11px] text-slate-400">
-              <span>1 000 ₽</span>
-              <span>3 500 ₽</span>
+              <span>20 BYN</span>
+              <span>120 BYN</span>
             </div>
           </div>
 
@@ -265,7 +265,7 @@ window.EcommerceCatalog = {
                 <div class="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between gap-2 mt-2">
                   <div>
                     <span class="text-[10px] text-slate-400 block">Цена</span>
-                    <span class="text-base font-extrabold text-slate-900 dark:text-white">{{ product.price }} ₽</span>
+                    <span class="text-base font-extrabold text-slate-900 dark:text-white">{{ product.price }} BYN</span>
                   </div>
                   <button type="button" class="btn-tw-sm btn-tw-primary">
                     В корзину
@@ -367,13 +367,13 @@ window.EcommerceCatalog = {
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs font-bold">
             <span>Макс. цена:</span>
-            <span class="text-emerald-600">{{ maxPrice }} ₽</span>
+            <span class="text-emerald-600">{{ maxPrice }} BYN</span>
           </div>
           <input 
             type="range" 
-            min="1000" 
-            max="3500" 
-            step="100"
+            min="20" 
+            max="120" 
+            step="5"
             v-model.number="maxPrice"
             @change="triggerLoading"
             class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none accent-emerald-600"

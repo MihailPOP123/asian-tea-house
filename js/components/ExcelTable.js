@@ -239,7 +239,7 @@ window.ExcelTable = {
           'ID': r.id,
           'Файл-источник': r.sourceFile || 'Excel импорт',
           'Название': r.title,
-          'Цена ($)': r.price,
+          'Цена (BYN)': r.price,
           'Категория': r.category,
           'Регион': r.origin || 'Азия',
           'Количество': r.stock,
@@ -389,7 +389,7 @@ window.ExcelTable = {
               <th>Наименование сорта</th>
               <th>Категория</th>
               <th>Регион</th>
-              <th class="text-right">Цена ($)</th>
+              <th class="text-right">Цена (BYN)</th>
               <th class="text-center">Остаток</th>
               <th class="text-center">Рейтинг</th>
               <th>Дата импорта</th>
@@ -440,7 +440,7 @@ window.ExcelTable = {
                 {{ row.origin || 'Азия' }}
               </td>
               <td class="text-right font-weight-bold text-danger">
-                \${{ (row.price || 0).toFixed(2) }}
+                {{ (row.price || 0).toFixed(2) }} BYN
               </td>
               <td class="text-center">
                 <span 
@@ -536,7 +536,7 @@ window.ExcelTable = {
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6 mb-3">
-                    <label class="font-weight-bold small text-muted text-uppercase">Цена ($) *</label>
+                    <label class="font-weight-bold small text-muted text-uppercase">Цена (BYN) *</label>
                     <input type="number" step="0.01" min="0" class="form-control" v-model="editFormData.price" required>
                   </div>
                   <div class="form-group col-md-6 mb-3">

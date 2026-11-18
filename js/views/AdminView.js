@@ -90,7 +90,7 @@ window.AdminView = {
         const exportData = this.teas.map(t => ({
           'ID': t.id,
           'Название': t.title,
-          'Цена ($)': t.price,
+          'Цена (BYN)': t.price,
           'Категория': t.category,
           'Регион': t.origin || 'Азия',
           'Количество': t.stock,
@@ -520,7 +520,7 @@ window.AdminView = {
                   <tr>
                     <td><code>price</code></td>
                     <td>DECIMAL(8,2)</td>
-                    <td>Цена ($)</td>
+                    <td>Цена (BYN)</td>
                     <td><span class="text-success font-weight-bold">Да</span></td>
                     <td><span class="text-success font-weight-bold">Да</span></td>
                     <td><span class="text-success font-weight-bold">Да</span></td>

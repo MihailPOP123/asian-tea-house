@@ -30,7 +30,7 @@ window.TableView = {
       searchQuery: '',
       selectedCategory: 'all',
       sortBy: 'default',
-      displayMode: 'grid', // 'grid' (плитки товаров по умолчанию) | 'table' (таблица)
+      displayMode: 'ecommerce', // 'ecommerce' (E-commerce витрина по умолчанию) | 'grid' (плитки) | 'table' (таблица)
 
       // Пагинация (требование: если > 10 строк — постраничная загрузка)
       currentPage: 1,
@@ -282,7 +282,7 @@ window.TableView = {
         const exportData = this.filteredTeas.map(t => ({
           'ID': t.id,
           'Название': t.title,
-          'Цена ($)': t.price,
+          'Цена (BYN)': t.price,
           'Категория': t.category,
           'Регион': t.origin || 'Азия',
           'Количество': t.stock,
@@ -402,8 +402,17 @@ window.TableView = {
 
               <!-- Переключатели: Режим плитки/таблицы + Режим пагинации/ленивой загрузки -->
               <div class="col-lg-3 col-md-6 text-lg-right d-flex justify-content-lg-end align-items-center flex-wrap gap-2">
-                <!-- Переключатель Плитка / Таблица (по умолчанию Плитка) -->
+                <!-- Переключатель: E-commerce (по умолчанию) / Плитка / Таблица -->
                 <div class="btn-group btn-group-sm mr-2" style="border-radius: var(--radius-sm); overflow: hidden;">
+                  <button 
+                    type="button" 
+                    class="btn"
+                    :class="displayMode === 'ecommerce' ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
+                    @click="displayMode = 'ecommerce'"
+                    title="Интерактивная E-commerce витрина с фильтрами и слайдером (по умолчанию)"
+                  >
+                    E-commerce
+                  </button>
                   <button 
                     type="button" 
                     class="btn"
@@ -421,15 +430,6 @@ window.TableView = {
                     title="Отображение таблицей"
                   >
                     Таблица
-                  </button>
-                  <button 
-                    type="button" 
-                    class="btn"
-                    :class="displayMode === 'ecommerce' ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
-                    @click="displayMode = 'ecommerce'"
-                    title="E-commerce витрина со слайдером цен и тегами"
-                  >
-                    E-commerce
                   </button>
                 </div>
 
@@ -554,7 +554,7 @@ window.TableView = {
                       <div>
                         <span class="small text-muted d-block" style="font-size: 0.72rem; line-height: 1;">Цена</span>
                         <span class="h4 font-weight-bold mb-0" style="font-family: var(--font-serif); color: var(--accent-dark); font-size: 1.35rem;">
-                          \${{ tea.price.toFixed(2) }}
+                          {{ tea.price.toFixed(2) }} BYN
                         </span>
                       </div>
                       <div class="text-right">
@@ -608,7 +608,7 @@ window.TableView = {
                   <th>Наименование сорта</th>
                   <th>Категория</th>
                   <th>Регион</th>
-                  <th class="text-right">Цена ($)</th>
+                  <th class="text-right">Цена (BYN)</th>
                   <th class="text-center">Остаток</th>
                   <th class="text-center">Рейтинг</th>
                   <th class="text-right" style="width: 170px;">Действия</th>
@@ -641,7 +641,7 @@ window.TableView = {
                     {{ tea.origin || 'Восточная Азия' }}
                   </td>
                   <td class="text-right font-weight-bold text-danger" style="font-size: 1.05rem;">
-                    \${{ tea.price.toFixed(2) }}
+                    {{ tea.price.toFixed(2) }} BYN
                   </td>
                   <td class="text-center">
                     <span 

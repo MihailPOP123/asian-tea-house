@@ -136,7 +136,7 @@ window.ProductGrid = {
               <div>
                 <span class="text-xs text-slate-400 block font-normal">Стоимость</span>
                 <span class="text-lg font-extrabold text-slate-900 dark:text-white">
-                  {{ item.price }} ₽
+                  {{ item.price }} BYN
                 </span>
               </div>
 

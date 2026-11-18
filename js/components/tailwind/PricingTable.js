@@ -20,8 +20,8 @@ window.PricingTable = {
           badge: null,
           isPopular: false,
           description: 'Идеально для любителей качественного чая и домашних дегустаций.',
-          priceMonthly: 1490,
-          priceAnnual: 1190,
+          priceMonthly: 45,
+          priceAnnual: 35,
           features: [
             { text: '3 сорта чая по 50 г каждый месяц', included: true },
             { text: 'Гид по правильному завариванию', included: true },
@@ -39,8 +39,8 @@ window.PricingTable = {
           badge: 'Popular (Популярный)',
           isPopular: true,
           description: 'Для ценителей редких улунов, коллекционных пуэров и церемоний.',
-          priceMonthly: 3490,
-          priceAnnual: 2790,
+          priceMonthly: 95,
+          priceAnnual: 79,
           features: [
             { text: '5 премиальных сортов по 75 г каждый месяц', included: true },
             { text: 'Гид по завариванию + карта чайных садов', included: true },
@@ -58,15 +58,15 @@ window.PricingTable = {
           badge: 'Премиум',
           isPopular: false,
           description: 'Для чайных клубов, ресторанов и коллекционеров винтажных блинов.',
-          priceMonthly: 7990,
-          priceAnnual: 6390,
+          priceMonthly: 195,
+          priceAnnual: 165,
           features: [
             { text: '8 редких сортов + 1 аукционный лот', included: true },
             { text: 'Персональная полка выдержки в хранилище', included: true },
             { text: 'Скидка 25% на оптовые поставки', included: true },
             { text: 'Выездные чайные церемонии мастера', included: true },
             { text: 'Персональный титестер 24/7', included: true },
-            { text: 'Бесплатная экспресс-доставка по РФ', included: true }
+            { text: 'Бесплатная экспресс-доставка', included: true }
           ],
           cta: 'Выбрать Клубный',
           buttonClass: 'bg-slate-900 text-white hover:bg-black dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100'
@@ -139,7 +139,7 @@ window.PricingTable = {
             <!-- Цена -->
             <div class="flex items-baseline gap-1">
               <span class="text-4xl font-extrabold text-slate-900 dark:text-white">
-                {{ billingCycle === 'monthly' ? plan.priceMonthly : plan.priceAnnual }} ₽
+                {{ billingCycle === 'monthly' ? plan.priceMonthly : plan.priceAnnual }} BYN
               </span>
               <span class="text-xs text-slate-400 font-medium">/ месяц</span>
             </div>

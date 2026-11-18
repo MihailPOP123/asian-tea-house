@@ -244,15 +244,7 @@
         @toast="addToast"
       ></auth-view>
 
-      <!-- 7. Лаборатория вёрстки Tailwind CSS (Все 4 уровня: Начальный, Средний, Продвинутый, Экспертный) -->
-      <tailwind-lab-view
-        v-else-if="currentView === 'tailwind'"
-        :current-user="currentUser"
-        @navigate="navigate"
-        @toast="addToast"
-      ></tailwind-lab-view>
-
-      <!-- 7.1. Единый хаб аналитики и графиков (Интеграция Tailwind Dashboard + Kanban + Pricing) -->
+      <!-- 7. Единый хаб аналитики и графиков (Интеграция Tailwind Dashboard + Kanban + Pricing) -->
       <analytics-view
         v-else-if="currentView === 'analytics'"
         :teas="teas"
@@ -341,7 +333,6 @@
   <script src="js/views/ChatView.js"></script>
   <script src="js/views/CeremonyView.js"></script>
   <script src="js/views/AnalyticsView.js"></script>
-  <script src="js/views/TailwindLabView.js"></script>
 
   <script src="main.js"></script>
 

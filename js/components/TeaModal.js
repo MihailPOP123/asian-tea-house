@@ -142,10 +142,10 @@ window.TeaModal = {
                   <div class="form-row">
                     <!-- Цена -->
                     <div class="form-group col-md-6 mb-3">
-                      <label class="font-weight-bold small text-muted text-uppercase">Цена ($) *</label>
+                      <label class="font-weight-bold small text-muted text-uppercase">Цена (BYN) *</label>
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">$</span>
+                          <span class="input-group-text">BYN</span>
                         </div>
                         <input 
                           type="number" 
@@ -243,7 +243,7 @@ window.TeaModal = {
                       {{ formData.category }}
                     </div>
                     <div class="text-danger font-weight-bold">
-                      \${{ formData.price ? parseFloat(formData.price).toFixed(2) : '0.00' }}
+                      {{ formData.price ? parseFloat(formData.price).toFixed(2) : '0.00' }} BYN
                     </div>
                   </div>
                 </div>

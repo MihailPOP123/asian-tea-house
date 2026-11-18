@@ -108,7 +108,7 @@ window.HomeView = {
                 <div>
                   <div class="card__header mb-2">
                     <h3 class="card__title mb-0" style="font-size: 1.05rem;">{{ tea.title }}</h3>
-                    <span class="card__price font-weight-bold">\${{ tea.price.toFixed(2) }}</span>
+                    <span class="card__price font-weight-bold">{{ tea.price.toFixed(2) }} BYN</span>
                   </div>
                   <div class="small text-muted font-weight-medium mb-2">
                     {{ tea.category }}
@@ -260,7 +260,6 @@ window.HomeView = {
               <li class="mb-1"><a href="#chat" class="text-light" @click.prevent="$emit('navigate', 'chat')">Чат с сомелье и мастером</a></li>
               <li class="mb-1"><a href="#analytics" class="text-light" @click.prevent="$emit('navigate', 'analytics')">Аналитика и графики выручки</a></li>
               <li class="mb-1"><a href="#excel-table" class="text-light" @click.prevent="$emit('navigate', 'excel-table')">Модуль Excel (Загрузка)</a></li>
-              <li class="mb-1"><a href="#tailwind" class="text-light" @click.prevent="$emit('navigate', 'tailwind')">Лаборатория Tailwind (Уровни 1-4)</a></li>
               <li class="mb-1"><a href="#logs" class="text-light" @click.prevent="$emit('navigate', 'logs')">Журнал изменений (Log)</a></li>
               <li class="mb-1"><a href="#files" class="text-light" @click.prevent="$emit('navigate', 'files')">Файлы хранилища</a></li>
               <li class="mb-1"><a href="#admin" class="text-light" @click.prevent="$emit('navigate', 'admin')">Voyager Админ-панель</a></li>

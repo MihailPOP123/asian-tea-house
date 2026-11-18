@@ -23,7 +23,7 @@ window.AnalyticsDashboard = {
         {
           id: 1,
           title: 'Общая выручка чайного дома',
-          value: '842 500 ₽',
+          value: '28 450 BYN',
           trend: '+12%',
           trendPositive: true,
           desc: 'по сравнению с прошлым месяцем'
@@ -39,7 +39,7 @@ window.AnalyticsDashboard = {
         {
           id: 3,
           title: 'Средний чек заказа',
-          value: '3 450 ₽',
+          value: '95 BYN',
           trend: '-3%',
           trendPositive: false,
           desc: 'сезонная распродажа пуэров'
@@ -69,11 +69,11 @@ window.AnalyticsDashboard = {
         { month: 'Дек', height: 'h-56', val: '950k', active: false }
       ],
       transactions: [
-        { id: 'ORD-7821', client: 'Александр В.', tea: 'Да Хун Пао Премиум (100 г)', sum: '1 850 ₽', date: '04.11.2026', status: 'Доставлен', statusType: 'success' },
-        { id: 'ORD-7820', client: 'Елена М.', tea: 'Шу Пуэр Гунтин 2012 (блин)', sum: '2 650 ₽', date: '04.11.2026', status: 'В пути', statusType: 'info' },
-        { id: 'ORD-7819', client: 'Дмитрий С.', tea: 'Бай Хао Инь Чжэнь (50 г)', sum: '2 950 ₽', date: '03.11.2026', status: 'Доставлен', statusType: 'success' },
-        { id: 'ORD-7818', client: 'Ольга П.', tea: 'Те Гуань Инь Ван (100 г)', sum: '1 420 ₽', date: '03.11.2026', status: 'Обработка', statusType: 'warning' },
-        { id: 'ORD-7817', client: 'Константин Р.', tea: 'Лунцзин Дождевой (50 г)', sum: '2 100 ₽', date: '02.11.2026', status: 'Доставлен', statusType: 'success' }
+        { id: 'ORD-7821', client: 'Александр В.', tea: 'Да Хун Пао Премиум (100 г)', sum: '48 BYN', date: '04.11.2026', status: 'Доставлен', statusType: 'success' },
+        { id: 'ORD-7820', client: 'Елена М.', tea: 'Шу Пуэр Гунтин 2012 (блин)', sum: '72 BYN', date: '04.11.2026', status: 'В пути', statusType: 'info' },
+        { id: 'ORD-7819', client: 'Дмитрий С.', tea: 'Бай Хао Инь Чжэнь (50 г)', sum: '85 BYN', date: '03.11.2026', status: 'Доставлен', statusType: 'success' },
+        { id: 'ORD-7818', client: 'Ольга П.', tea: 'Те Гуань Инь Ван (100 г)', sum: '36 BYN', date: '03.11.2026', status: 'Обработка', statusType: 'warning' },
+        { id: 'ORD-7817', client: 'Константин Р.', tea: 'Лунцзин Дождевой (50 г)', sum: '55 BYN', date: '02.11.2026', status: 'Доставлен', statusType: 'success' }
       ]
     };
   },
@@ -217,8 +217,8 @@ window.AnalyticsDashboard = {
           </div>
 
           <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
-            <span>Минимум: 450 000 ₽</span>
-            <span>Максимум: 950 000 ₽</span>
+            <span>Минимум: 15 000 BYN</span>
+            <span>Максимум: 32 000 BYN</span>
           </div>
         </div>
 

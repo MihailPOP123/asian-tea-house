@@ -228,7 +228,7 @@ const DEFAULT_LOGS = [
       stock: 24,
       category: 'Зеленый чай'
     },
-    details: 'Корректировка цены (+2$) и пополнение складских остатков'
+    details: 'Корректировка цены (+2 BYN) и пополнение складских остатков'
   }
 ];
 
@@ -619,7 +619,7 @@ window.TeaApiService = {
       entityTitle: newItem.title,
       oldState: null,
       newState: newItem,
-      details: `Добавлен новый сорт чая «${newItem.title}» (${newItem.price}$)`
+      details: `Добавлен новый сорт чая «${newItem.title}» (${newItem.price} BYN)`
     });
 
     return newItem;

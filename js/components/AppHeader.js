@@ -189,19 +189,6 @@ window.AppHeader = {
               </div>
             </li>
 
-            <!-- Лаборатория Tailwind CSS 3.4+ -->
-            <li class="nav-item">
-              <a 
-                href="#tailwind" 
-                class="nav-link font-weight-bold px-2.5 small text-uppercase d-flex align-items-center"
-                :class="{ 'text-success active border-bottom border-success': currentView === 'tailwind', 'text-dark': currentView !== 'tailwind' }"
-                @click.prevent="setRoute('tailwind')"
-              >
-                <span>Лаборатория Tailwind</span>
-                <span class="text-success font-weight-bold ml-1.5" style="font-size: 0.72rem; letter-spacing: 0.05em;">v3.4</span>
-              </a>
-            </li>
-
             <!-- Voyager Админ — СТРОГО ТОЛЬКО ДЛЯ РОЛИ 'admin' (Требование 3) -->
             <!-- Для обычного покупателя (role: 'user') этот пункт скрыт! -->
             <li class="nav-item" v-if="currentUser && currentUser.role === 'admin'">
@@ -305,11 +292,6 @@ window.AppHeader = {
           </li>
           <li class="nav-item py-1">
             <a href="#logs" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('logs')">Журнал действий</a>
-          </li>
-          <li class="nav-item py-1">
-            <a href="#tailwind" class="nav-link text-success font-weight-bold px-0" @click.prevent="setRoute('tailwind')">
-              Лаборатория Tailwind (Уровни 1-4)
-            </a>
           </li>
           
           <!-- Voyager Админ в мобильном меню ТОЛЬКО для role: 'admin' -->

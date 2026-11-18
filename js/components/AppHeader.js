@@ -6,6 +6,9 @@
 
 window.AppHeader = {
   name: 'AppHeader',
+  components: {
+    'dark-mode-toggle': window.DarkModeToggle
+  },
   props: {
     currentView: {
       type: String,
@@ -14,9 +17,13 @@ window.AppHeader = {
     currentUser: {
       type: Object,
       default: null
+    },
+    isDark: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ['navigate', 'logout'],
+  emits: ['navigate', 'logout', 'toggle-dark'],
   data() {
     return {
       mobileMenuOpen: false,
@@ -96,6 +103,30 @@ window.AppHeader = {
                 @click.prevent="setRoute('table')"
               >
                 Каталог
+              </a>
+            </li>
+
+            <!-- Подбор церемонии (Tailwind MultiStepForm) -->
+            <li class="nav-item">
+              <a 
+                href="#ceremony" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'ceremony', 'text-dark': currentView !== 'ceremony' }"
+                @click.prevent="setRoute('ceremony')"
+              >
+                Церемонии
+              </a>
+            </li>
+
+            <!-- Чат с мастером (Tailwind MessengerChat) -->
+            <li class="nav-item">
+              <a 
+                href="#chat" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'chat', 'text-dark': currentView !== 'chat' }"
+                @click.prevent="setRoute('chat')"
+              >
+                Чат с мастером
               </a>
             </li>
 
@@ -188,8 +219,13 @@ window.AppHeader = {
           </ul>
         </nav>
 
-        <!-- 3. Пользовательский блок справа с быстрым переходом в профиль (Требование 4) -->
+        <!-- 3. Пользовательский блок справа с переключателем темы и профилем -->
         <div class="user-action-block d-flex align-items-center">
+          
+          <!-- Переключатель темной / светлой темы (Tailwind DarkModeToggle) -->
+          <div class="mr-2 d-none d-sm-block">
+            <dark-mode-toggle :is-dark="isDark" @toggle-dark="$emit('toggle-dark')"></dark-mode-toggle>
+          </div>
           
           <!-- Авторизованный пользователь -->
           <div v-if="currentUser" class="d-flex align-items-center">
@@ -274,6 +310,12 @@ window.AppHeader = {
             <a href="#table" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('table')">Каталог чая</a>
           </li>
           <li class="nav-item py-1">
+            <a href="#ceremony" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('ceremony')">Подбор церемонии</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#chat" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('chat')">Чат с сомелье</a>
+          </li>
+          <li class="nav-item py-1">
             <a href="#analytics" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('analytics')">Аналитика и графики</a>
           </li>
           <li class="nav-item py-1">
@@ -313,6 +355,9 @@ window.AppHeader = {
             <a href="#auth" class="nav-link text-success font-weight-bold px-0" @click.prevent="setRoute('auth')">
               Войти в систему
             </a>
+          </li>
+          <li class="nav-item py-2 border-top mt-2">
+            <dark-mode-toggle :is-dark="isDark" @toggle-dark="$emit('toggle-dark')"></dark-mode-toggle>
           </li>
         </ul>
       </div>

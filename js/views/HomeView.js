@@ -5,7 +5,9 @@
 window.HomeView = {
   name: 'HomeView',
   components: {
-    'pricing-table': window.PricingTable
+    'pricing-table': window.PricingTable,
+    'multi-step-form': window.MultiStepForm,
+    'profile-card': window.ProfileCard
   },
   props: {
     teas: {
@@ -45,21 +47,35 @@ window.HomeView = {
               Насладитесь балансом чистоты, свежести и древней чайной философии.
             </p>
 
-            <!-- Основной и вторичный CTA с четким визуальным весом -->
-            <div class="d-flex flex-wrap align-items-center gap-3">
+            <!-- Основной и вторичные CTA с четким визуальным весом -->
+            <div class="d-flex flex-wrap align-items-center gap-2">
               <button 
                 @click="$emit('navigate', 'table')" 
-                class="btn text-white px-4 py-3 mr-3 mb-2 font-weight-bold shadow-sm" 
+                class="btn text-white px-4 py-3 mr-2 mb-2 font-weight-bold shadow-sm" 
                 style="background-color: var(--accent-brown); letter-spacing: 0.05em; border-radius: var(--radius-sm);"
               >
-                ОТКРЫТЬ КАТАЛОГ ЧАЯ &rarr;
+                ОТКРЫТЬ КАТАЛОГ &rarr;
+              </button>
+              <button 
+                @click="$emit('navigate', 'ceremony')" 
+                class="btn btn-outline-dark px-4 py-3 mr-2 mb-2 font-weight-bold" 
+                style="letter-spacing: 0.05em; border-radius: var(--radius-sm);"
+              >
+                ПОДБОР ЦЕРЕМОНИИ &rarr;
+              </button>
+              <button 
+                @click="$emit('navigate', 'chat')" 
+                class="btn btn-dark text-white px-4 py-3 mr-2 mb-2 font-weight-bold shadow-sm" 
+                style="background-color: var(--accent-dark); letter-spacing: 0.05em; border-radius: var(--radius-sm);"
+              >
+                ЧАТ С СОМЕЛЬЕ &rarr;
               </button>
               <button 
                 @click="$emit('navigate', 'analytics')" 
-                class="btn btn-outline-dark px-4 py-3 mb-2 font-weight-bold" 
+                class="btn btn-outline-secondary px-3 py-3 mb-2 font-weight-bold" 
                 style="letter-spacing: 0.05em; border-radius: var(--radius-sm);"
               >
-                АНАЛИТИКА И ГРАФИКИ &rarr;
+                АНАЛИТИКА &rarr;
               </button>
             </div>
           </div>
@@ -141,6 +157,51 @@ window.HomeView = {
         </div>
       </section>
 
+      <!-- 4.2. Индивидуальный подбор чайной церемонии (Интеграция Tailwind MultiStepForm) -->
+      <section class="py-5" id="ceremony" style="background-color: #FAF7F2; border-bottom: 1px solid #E5E0D8;">
+        <div class="container">
+          <div class="text-center max-w-2xl mx-auto mb-4">
+            <span class="text-uppercase font-weight-bold text-muted small" style="letter-spacing: 0.12em; font-size: 0.75rem;">Индивидуальный заказ</span>
+            <h2 class="section-title mb-2">Подбор и заказ чайной церемонии</h2>
+            <p class="text-muted small">Интерактивный мастер: контакты, доставка, выбор ритуала и подтверждение</p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="w-100" style="max-width: 820px;">
+              <multi-step-form></multi-step-form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3. Наши чайные мастера (Интеграция Tailwind ProfileCard) -->
+      <section class="py-5" id="masters" style="background-color: var(--bg-color); border-bottom: 1px solid #E5E0D8;">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <span class="text-uppercase font-weight-bold text-muted small" style="letter-spacing: 0.12em; font-size: 0.75rem;">Хранители традиций</span>
+              <h2 class="section-title text-left mb-3">Мастера чайного дома</h2>
+              <p class="text-muted mb-3" style="line-height: 1.7;">
+                В Asian Tea House каждую партию чая лично оценивают дипломированные титестеры. Наш ведущий мастер Чэнь Юнь ежегодно проводит месяцы в чайных садах Уишань и Юньнань, отбирая сырьё с древних чайных деревьев.
+              </p>
+              <p class="text-muted mb-4" style="line-height: 1.7;">
+                Вы можете задать любой вопрос о проливах, гайванях и выдержке пуэров прямо в онлайн-чате с сомелье.
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <button @click="$emit('navigate', 'chat')" class="btn btn-dark font-weight-bold px-4 py-2.5 mr-2 mb-2" style="border-radius: var(--radius-sm); background-color: var(--accent-dark);">
+                  Написать мастеру в чат &rarr;
+                </button>
+                <button @click="$emit('navigate', 'analytics')" class="btn btn-outline-dark font-weight-bold px-4 py-2.5 mb-2" style="border-radius: var(--radius-sm);">
+                  Поставки и аналитика
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center">
+              <profile-card></profile-card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 5. Преимущества -->
       <section class="advantages py-5" id="advantages" style="background-color: var(--bg-color);">
         <div class="container">
@@ -185,6 +246,46 @@ window.HomeView = {
         </div>
       </section>
 
+      <!-- 6.1. Часто задаваемые вопросы (Интеграция Tailwind FAQ Accordion) -->
+      <section class="py-5" id="faq" style="background-color: var(--bg-color); border-top: 1px solid #E5E0D8;">
+        <div class="container container--narrow">
+          <div class="text-center mb-4">
+            <span class="text-uppercase font-weight-bold text-muted small" style="letter-spacing: 0.12em; font-size: 0.75rem;">Вопросы и ответы</span>
+            <h2 class="section-title mb-2">Часто задаваемые вопросы</h2>
+            <p class="text-muted small">Всё, что нужно знать о проливах, культуре чая и хранении сортов</p>
+          </div>
+          <div class="space-y-3" style="display: flex; flex-direction: column; gap: 12px;">
+            <details class="bg-white rounded-lg border p-3.5 shadow-sm" style="border-color: #E5E0D8;">
+              <summary class="font-weight-bold text-dark cursor-pointer d-flex justify-content-between align-items-center" style="cursor: pointer;">
+                <span>Как правильно заваривать коллекционный улун методом проливов?</span>
+                <span class="text-muted small">&darr;</span>
+              </summary>
+              <div class="mt-2 text-muted small pt-2 border-top">
+                Используйте гайвань или чайник из исинской глины. На 120 мл воды возьмите 6-7 г сухого листа. Температура воды 92-95°C. Первый пролив — промывочный (сразу слить), последующие проливы длятся от 5 до 15 секунд с постепенным увеличением времени.
+              </div>
+            </details>
+            <details class="bg-white rounded-lg border p-3.5 shadow-sm" style="border-color: #E5E0D8;">
+              <summary class="font-weight-bold text-dark cursor-pointer d-flex justify-content-between align-items-center" style="cursor: pointer;">
+                <span>В чём разница между Шу Пуэром и Шэн Пуэром?</span>
+                <span class="text-muted small">&darr;</span>
+              </summary>
+              <div class="mt-2 text-muted small pt-2 border-top">
+                Шэн Пуэр — традиционный светлый пуэр естественной ферментации, с годами приобретающий сухофруктовые ноты. Шу Пуэр проходит ускоренную ферментацию (Во Дуй), имеет тёмный настой, древесно-ореховый профиль и бархатистый вкус.
+              </div>
+            </details>
+            <details class="bg-white rounded-lg border p-3.5 shadow-sm" style="border-color: #E5E0D8;">
+              <summary class="font-weight-bold text-dark cursor-pointer d-flex justify-content-between align-items-center" style="cursor: pointer;">
+                <span>Как работает доставка и вакуумная упаковка чая?</span>
+                <span class="text-muted small">&darr;</span>
+              </summary>
+              <div class="mt-2 text-muted small pt-2 border-top">
+                Каждая партия герметично фасуется в многослойные фольгированные пакеты с zip-замком или в фирменные жестяные тубы, защищающие лист от ультрафиолета и посторонних запахов. Доставка осуществляется курьером или экспресс-почтой.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <!-- 7. Подписка (С реактивным тостом вместо alert) -->
       <section class="subscribe py-5" id="subscribe" style="background-color: #FAF7F2; border-top: 1px solid #E5E0D8;">
         <div class="container container--subscribe text-center">
@@ -223,6 +324,8 @@ window.HomeView = {
             <ul class="list-unstyled small">
               <li class="mb-1"><a href="#home" class="text-light" @click.prevent="$emit('navigate', 'home')">Главная страница</a></li>
               <li class="mb-1"><a href="#table" class="text-light" @click.prevent="$emit('navigate', 'table')">Каталог сортов чая</a></li>
+              <li class="mb-1"><a href="#ceremony" class="text-light" @click.prevent="$emit('navigate', 'ceremony')">Подбор чайной церемонии</a></li>
+              <li class="mb-1"><a href="#chat" class="text-light" @click.prevent="$emit('navigate', 'chat')">Чат с сомелье и мастером</a></li>
               <li class="mb-1"><a href="#analytics" class="text-light" @click.prevent="$emit('navigate', 'analytics')">Аналитика и графики выручки</a></li>
               <li class="mb-1"><a href="#excel-table" class="text-light" @click.prevent="$emit('navigate', 'excel-table')">Модуль Excel (Загрузка)</a></li>
               <li class="mb-1"><a href="#tailwind" class="text-light" @click.prevent="$emit('navigate', 'tailwind')">Лаборатория Tailwind (Уровни 1-4)</a></li>

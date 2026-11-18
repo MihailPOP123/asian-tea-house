@@ -179,8 +179,10 @@
     <app-header 
       :current-view="currentView" 
       :current-user="currentUser" 
+      :is-dark="isDark"
       @navigate="navigate" 
       @logout="handleLogout"
+      @toggle-dark="toggleDarkMode"
     ></app-header>
 
     <!-- ОСНОВНЫЕ СТРАНИЦЫ ПРИЛОЖЕНИЯ -->
@@ -259,6 +261,22 @@
         @toast="addToast"
       ></analytics-view>
 
+      <!-- 7.2. Онлайн-чат с чайными мастерами и сомелье (Tailwind MessengerChat) -->
+      <chat-view
+        v-else-if="currentView === 'chat'"
+        :current-user="currentUser"
+        @navigate="navigate"
+        @toast="addToast"
+      ></chat-view>
+
+      <!-- 7.3. Индивидуальный подбор и заказ чайной церемонии (Tailwind MultiStepForm) -->
+      <ceremony-view
+        v-else-if="currentView === 'ceremony'"
+        :current-user="currentUser"
+        @navigate="navigate"
+        @toast="addToast"
+      ></ceremony-view>
+
       <!-- 8. Личный кабинет и профиль пользователя (Требование 4) -->
       <profile-view
         v-else-if="currentView === 'profile'"
@@ -276,6 +294,9 @@
       :error-info="errorModalInfo" 
       @close="showErrorModal = false"
     ></error-modal>
+
+    <!-- Плавающий виджет «Чат с чайным мастером» (на всех страницах) -->
+    <floating-chat-widget @navigate="navigate"></floating-chat-widget>
   </div>
 
   <!-- Сервисы хранилища данных, асинхронного API, журнала и пользователей -->
@@ -289,18 +310,6 @@
   <script src="js/components/CompareModal.js"></script>
   <script src="js/components/ExcelUploader.js"></script>
   <script src="js/components/ExcelTable.js"></script>
-  <script src="js/components/AppHeader.js"></script>
-  <script src="js/Header.js"></script>
-
-  <!-- Vue Представления (Views) Базового Проекта -->
-  <script src="js/views/HomeView.js"></script>
-  <script src="js/views/AuthView.js"></script>
-  <script src="js/views/TableView.js"></script>
-  <script src="js/views/ExcelTableView.js"></script>
-  <script src="js/views/LogsView.js"></script>
-  <script src="js/views/FilesView.js"></script>
-  <script src="js/views/AdminView.js"></script>
-  <script src="js/views/ProfileView.js"></script>
 
   <!-- Vue Компоненты Tailwind CSS (Уровни 1, 2, 3, 4 и Дизайн-система) -->
   <script src="js/components/tailwind/ProfileCard.js"></script>
@@ -318,8 +327,25 @@
   <script src="js/components/tailwind/MultiStepForm.js"></script>
   <script src="js/components/tailwind/EcommerceCatalog.js"></script>
   <script src="js/components/tailwind/DesignSystemShowcase.js"></script>
-  <script src="js/views/TailwindLabView.js"></script>
+
+  <!-- Виджеты и навигация сайта -->
+  <script src="js/components/FloatingChatWidget.js"></script>
+  <script src="js/components/AppHeader.js"></script>
+  <script src="js/Header.js"></script>
+
+  <!-- Vue Представления (Views) Проекта -->
+  <script src="js/views/HomeView.js"></script>
+  <script src="js/views/AuthView.js"></script>
+  <script src="js/views/TableView.js"></script>
+  <script src="js/views/ExcelTableView.js"></script>
+  <script src="js/views/LogsView.js"></script>
+  <script src="js/views/FilesView.js"></script>
+  <script src="js/views/AdminView.js"></script>
+  <script src="js/views/ProfileView.js"></script>
+  <script src="js/views/ChatView.js"></script>
+  <script src="js/views/CeremonyView.js"></script>
   <script src="js/views/AnalyticsView.js"></script>
+  <script src="js/views/TailwindLabView.js"></script>
 
   <script src="main.js"></script>
 

@@ -24,6 +24,13 @@ const app = createApp({
       })(),
       teas: [],
       toasts: [],
+      isDark: (function() {
+        try {
+          return localStorage.getItem('asian_tea_theme') === 'dark';
+        } catch (e) {
+          return false;
+        }
+      })(),
 
       // Модальное окно ошибки неподходящего формата файла (Требование 1)
       showErrorModal: false,
@@ -51,6 +58,9 @@ const app = createApp({
     'files-view': window.FilesView,
     'admin-view': window.AdminView,
     'analytics-view': window.AnalyticsView,
+    'chat-view': window.ChatView,
+    'ceremony-view': window.CeremonyView,
+    'floating-chat-widget': window.FloatingChatWidget,
     'tailwind-lab-view': window.TailwindLabView,
     'profile-card': window.ProfileCard,
     'tailwind-navbar': window.TailwindNavbar,
@@ -82,6 +92,11 @@ const app = createApp({
 
     // 3. Обработка маршрутизации по хэшу URL (#table, #logs, #excel-section и т.д.)
     this.initHashRouting();
+
+    // 4. Применение темной темы при инициализации
+    if (this.isDark) {
+      document.documentElement.classList.add('dark');
+    }
   },
   methods: {
     async refreshTeas() {
@@ -110,6 +125,18 @@ const app = createApp({
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
+    toggleDarkMode() {
+      this.isDark = !this.isDark;
+      try {
+        localStorage.setItem('asian_tea_theme', this.isDark ? 'dark' : 'light');
+      } catch (e) {}
+      if (this.isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    },
+
     initHashRouting() {
       const handleHash = () => {
         const hash = window.location.hash.replace('#', '').trim();
@@ -128,6 +155,16 @@ const app = createApp({
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
         }
+        if (hash === 'chat' || hash === 'messenger' || hash === 'sommelier-chat') {
+          this.currentView = 'chat';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        if (hash === 'ceremony' || hash === 'order-wizard' || hash === 'quiz' || hash === 'custom-order') {
+          this.currentView = 'ceremony';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
         // Защита прямого перехода по URL #admin
         if (hash === 'admin' && (!this.currentUser || this.currentUser.role !== 'admin')) {
           this.currentView = 'home';
@@ -140,7 +177,7 @@ const app = createApp({
           return;
         }
 
-        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'tailwind', 'profile', 'analytics'];
+        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'tailwind', 'profile', 'analytics', 'chat', 'ceremony'];
         if (validViews.includes(hash)) {
           this.currentView = hash;
         }

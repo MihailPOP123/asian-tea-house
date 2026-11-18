@@ -11,6 +11,9 @@
 
 window.ProfileView = {
   name: 'ProfileView',
+  components: {
+    'profile-card': window.ProfileCard
+  },
   props: {
     currentUser: {
       type: Object,
@@ -307,6 +310,16 @@ window.ProfileView = {
               </div>
 
             </div>
+
+            <!-- Карточка чайного мастера-куратора (Tailwind ProfileCard Integration) -->
+            <div class="mt-4">
+              <div class="text-muted small font-weight-bold text-uppercase mb-2 text-center" style="letter-spacing: 0.05em;">
+                Ваш персональный куратор
+              </div>
+              <div class="d-flex justify-content-center">
+                <profile-card></profile-card>
+              </div>
+            </div>
           </div>
 
           <!-- Правая колонка: Вкладки настроек профиля -->
@@ -458,6 +471,16 @@ window.ProfileView = {
 
               </div>
 
+            </div>
+
+            <!-- Карточка чайного мастера-куратора (Tailwind ProfileCard Integration) -->
+            <div class="mt-4">
+              <div class="text-muted small font-weight-bold text-uppercase mb-2 text-center" style="letter-spacing: 0.05em;">
+                Ваш персональный куратор
+              </div>
+              <div class="d-flex justify-content-center">
+                <profile-card></profile-card>
+              </div>
             </div>
           </div>
 

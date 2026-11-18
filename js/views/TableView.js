@@ -12,7 +12,8 @@
 window.TableView = {
   name: 'TableView',
   components: {
-    'tea-modal': window.TeaModal
+    'tea-modal': window.TeaModal,
+    'ecommerce-catalog': window.EcommerceCatalog
   },
   props: {
     currentUser: {
@@ -421,6 +422,15 @@ window.TableView = {
                   >
                     Таблица
                   </button>
+                  <button 
+                    type="button" 
+                    class="btn"
+                    :class="displayMode === 'ecommerce' ? 'btn-dark font-weight-bold' : 'btn-outline-secondary'"
+                    @click="displayMode = 'ecommerce'"
+                    title="E-commerce витрина со слайдером цен и тегами"
+                  >
+                    E-commerce
+                  </button>
                 </div>
 
                 <!-- Режим подгрузки: Постраничный vs Ленивый -->
@@ -458,8 +468,13 @@ window.TableView = {
           ></ad-slot>
         </div>
 
+        <!-- РЕЖИМ 3: ИНТЕРАКТИВНАЯ E-COMMERCE ВИТРИНА ТАЙЛВИНД (ФИЛЬТРЫ, СЛАЙДЕР ЦЕН, ДРОУЭР) -->
+        <div v-if="displayMode === 'ecommerce'" class="mb-4">
+          <ecommerce-catalog></ecommerce-catalog>
+        </div>
+
         <!-- Состояние загрузки -->
-        <div v-if="isLoading" class="text-center py-5">
+        <div v-else-if="isLoading" class="text-center py-5">
           <div class="spinner-border text-success" role="status"></div>
           <div class="mt-2 text-muted small">Загрузка сортов чая...</div>
         </div>
@@ -670,7 +685,7 @@ window.TableView = {
         </div>
 
         <!-- УНИВЕРСАЛЬНАЯ ПАНЕЛЬ: ПАГИНАЦИЯ / ЛЕНИВАЯ ПОДГРУЗКА ДЛЯ ПЛИТОК И ТАБЛИЦЫ -->
-        <div class="card border-0 shadow-sm bg-white p-3 mb-4" style="border-radius: var(--radius-md);">
+        <div v-if="displayMode !== 'ecommerce'" class="card border-0 shadow-sm bg-white p-3 mb-4" style="border-radius: var(--radius-md);">
           <div class="d-flex flex-wrap justify-content-between align-items-center">
             <div class="text-muted small mb-2 mb-md-0 d-flex align-items-center flex-wrap">
               <span>Показано <b>{{ displayedTeas.length }}</b> из <b>{{ totalRows }}</b> сортов чая</span>

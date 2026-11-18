@@ -150,12 +150,12 @@ window.AnalyticsDashboard = {
             <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 truncate">
               {{ stat.title }}
             </span>
-            <!-- Бейдж тренда: зеленый при плюсе, красный при минусе -->
+            <!-- Тренд: чистый текст без цветных плашек -->
             <span 
               :class="stat.trendPositive 
-                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' 
-                : 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'"
-              class="text-xs font-extrabold px-2 py-0.5 rounded-full flex-shrink-0"
+                ? 'text-emerald-600 dark:text-emerald-400' 
+                : 'text-rose-600 dark:text-rose-400'"
+              class="text-xs font-bold flex-shrink-0"
             >
               {{ stat.trend }}
             </span>
@@ -181,7 +181,7 @@ window.AnalyticsDashboard = {
               <h3 class="text-base font-bold text-slate-900 dark:text-white">Динамика оборота по месяцам</h3>
               <p class="text-xs text-slate-400">Объем реализованного чая высшей категории</p>
             </div>
-            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
               Пик в декабре
             </span>
           </div>

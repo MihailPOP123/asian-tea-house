@@ -6,6 +6,9 @@
  */
 window.AdminView = {
   name: 'AdminView',
+  components: {
+    'analytics-dashboard': window.AnalyticsDashboard
+  },
   props: {
     currentUser: {
       type: Object,
@@ -177,6 +180,16 @@ window.AdminView = {
               <a 
                 href="#" 
                 class="nav-link text-white-50 px-3 py-2 d-flex align-items-center"
+                :class="{ 'active-voyager-item font-weight-bold text-white': activeTab === 'analytics' }"
+                @click.prevent="activeTab = 'analytics'"
+              >
+                Аналитика и графики
+              </a>
+            </li>
+            <li class="nav-item">
+              <a 
+                href="#" 
+                class="nav-link text-white-50 px-3 py-2 d-flex align-items-center"
                 :class="{ 'active-voyager-item font-weight-bold text-white': activeTab === 'roles' }"
                 @click.prevent="activeTab = 'roles'"
               >
@@ -237,7 +250,7 @@ window.AdminView = {
           <div class="d-flex align-items-center">
             <span class="text-muted small mr-2">Панель управления /</span>
             <span class="font-weight-bold text-dark text-capitalize small">
-              {{ activeTab === 'dashboard' ? 'Сводка системы' : (activeTab === 'roles' ? 'Роли и права' : 'BREAD Менеджер') }}
+              {{ activeTab === 'dashboard' ? 'Сводка системы' : (activeTab === 'analytics' ? 'Аналитика и графики' : (activeTab === 'roles' ? 'Роли и права' : 'BREAD Менеджер')) }}
             </span>
           </div>
 
@@ -373,6 +386,24 @@ window.AdminView = {
               </div>
             </div>
           </div>
+
+          <!-- Интеграция графиков Tailwind в сводку Voyager (Senior Unified Architecture) -->
+          <div class="mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="font-weight-bold text-dark mb-0">Динамика выручки и метрики магазина</h5>
+              <button class="btn btn-sm btn-outline-dark" @click="activeTab = 'analytics'">Открыть детальный отчёт &rarr;</button>
+            </div>
+            <analytics-dashboard></analytics-dashboard>
+          </div>
+        </div>
+
+        <!-- 1.1. ВКЛАДКА: АНАЛИТИКА И ГРАФИКИ ВЫРУЧКИ (VOYAGER INTEGRATION) -->
+        <div v-if="activeTab === 'analytics'">
+          <div class="mb-4">
+            <h4 class="font-weight-bold text-dark mb-1">Аналитический дашборд продаж и выручки</h4>
+            <p class="text-muted small">Метрики выручки, динамика заказов и транзакции на базе Tailwind CSS</p>
+          </div>
+          <analytics-dashboard></analytics-dashboard>
         </div>
 
         <!-- 2. ВКЛАДКА: УПРАВЛЕНИЕ РОЛЯМИ И ПОЛЬЗОВАТЕЛЯМИ -->

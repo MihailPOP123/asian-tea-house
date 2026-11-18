@@ -99,6 +99,18 @@ window.AppHeader = {
               </a>
             </li>
 
+            <!-- Аналитика и графики (Senior интеграция дашборда) -->
+            <li class="nav-item">
+              <a 
+                href="#analytics" 
+                class="nav-link font-weight-bold px-2.5 small text-uppercase"
+                :class="{ 'text-success active border-bottom border-success': currentView === 'analytics', 'text-dark': currentView !== 'analytics' }"
+                @click.prevent="setRoute('analytics')"
+              >
+                Аналитика
+              </a>
+            </li>
+
             <!-- Сгруппированное выпадающее меню «Модули данных и Excel» для компактности -->
             <li class="nav-item dropdown position-relative">
               <a 
@@ -260,6 +272,9 @@ window.AppHeader = {
           </li>
           <li class="nav-item py-1">
             <a href="#table" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('table')">Каталог чая</a>
+          </li>
+          <li class="nav-item py-1">
+            <a href="#analytics" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('analytics')">Аналитика и графики</a>
           </li>
           <li class="nav-item py-1">
             <a href="#excel-table" class="nav-link text-dark font-weight-bold px-0" @click.prevent="setRoute('excel-table')">Таблица Excel</a>

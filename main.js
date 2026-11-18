@@ -50,6 +50,7 @@ const app = createApp({
     'logs-view': window.LogsView,
     'files-view': window.FilesView,
     'admin-view': window.AdminView,
+    'analytics-view': window.AnalyticsView,
     'tailwind-lab-view': window.TailwindLabView,
     'profile-card': window.ProfileCard,
     'tailwind-navbar': window.TailwindNavbar,
@@ -122,6 +123,11 @@ const app = createApp({
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
         }
+        if (hash === 'analytics' || hash === 'charts' || hash === 'sales-dashboard') {
+          this.currentView = 'analytics';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
         // Защита прямого перехода по URL #admin
         if (hash === 'admin' && (!this.currentUser || this.currentUser.role !== 'admin')) {
           this.currentView = 'home';
@@ -134,7 +140,7 @@ const app = createApp({
           return;
         }
 
-        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'tailwind', 'profile'];
+        const validViews = ['home', 'table', 'excel-table', 'logs', 'files', 'admin', 'auth', 'tailwind', 'profile', 'analytics'];
         if (validViews.includes(hash)) {
           this.currentView = hash;
         }

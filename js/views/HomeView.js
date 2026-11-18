@@ -4,6 +4,9 @@
  */
 window.HomeView = {
   name: 'HomeView',
+  components: {
+    'pricing-table': window.PricingTable
+  },
   props: {
     teas: {
       type: Array,
@@ -52,11 +55,11 @@ window.HomeView = {
                 ОТКРЫТЬ КАТАЛОГ ЧАЯ &rarr;
               </button>
               <button 
-                @click="$emit('navigate', 'excel-table')" 
+                @click="$emit('navigate', 'analytics')" 
                 class="btn btn-outline-dark px-4 py-3 mb-2 font-weight-bold" 
                 style="letter-spacing: 0.05em; border-radius: var(--radius-sm);"
               >
-                МОДУЛЬ EXCEL &rarr;
+                АНАЛИТИКА И ГРАФИКИ &rarr;
               </button>
             </div>
           </div>
@@ -128,6 +131,13 @@ window.HomeView = {
               </div>
             </article>
           </div>
+        </div>
+      </section>
+
+      <!-- 4.1. Чайный клуб по подписке (Интеграция тарифов Tailwind Pricing) -->
+      <section class="py-5" id="club" style="background-color: var(--bg-color); border-top: 1px solid #E5E0D8; border-bottom: 1px solid #E5E0D8;">
+        <div class="container">
+          <pricing-table></pricing-table>
         </div>
       </section>
 
@@ -213,6 +223,7 @@ window.HomeView = {
             <ul class="list-unstyled small">
               <li class="mb-1"><a href="#home" class="text-light" @click.prevent="$emit('navigate', 'home')">Главная страница</a></li>
               <li class="mb-1"><a href="#table" class="text-light" @click.prevent="$emit('navigate', 'table')">Каталог сортов чая</a></li>
+              <li class="mb-1"><a href="#analytics" class="text-light" @click.prevent="$emit('navigate', 'analytics')">Аналитика и графики выручки</a></li>
               <li class="mb-1"><a href="#excel-table" class="text-light" @click.prevent="$emit('navigate', 'excel-table')">Модуль Excel (Загрузка)</a></li>
               <li class="mb-1"><a href="#tailwind" class="text-light" @click.prevent="$emit('navigate', 'tailwind')">Лаборатория Tailwind (Уровни 1-4)</a></li>
               <li class="mb-1"><a href="#logs" class="text-light" @click.prevent="$emit('navigate', 'logs')">Журнал изменений (Log)</a></li>
